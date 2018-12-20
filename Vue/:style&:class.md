@@ -1,0 +1,73 @@
+- [x] `:class`  
+添加在css 中的类名对应的样式。由于是在`css`中的样式。样式本身是固定的。可以将一个样式用于多个元素。却不能在一个元素上根据数据驱动，绑定一个类，显示不同的样式。
+
+```html
+<!--对象语法-->
+<div :class="{active: isActive}"></div>
+<!--多个判断-->
+<div :class="{active: isActive, pass: isPass}"></div>
+<!--绑定一个对象-->
+<div :class="classObj"></div>
+<!--与已有的class共存-->
+<div class="a" :class="{active: isActive}"></div>
+<!--绑定计算属性-->
+<div :class="creatClass"></div>
+<!--数组语法-->
+<div :class="['a', isActive ? 'active' : '', {pass: isPass}]"></div>
+
+<script>
+export default {
+    data() {
+        return {
+            isActive: false,
+            isPass: true,
+            classObj: {
+                active: true,
+                pass: false,
+            },
+        }
+    },
+    computed: {
+        creatClass() {
+            return {
+                active: this.isActive && this.isPass,
+                pass: this.pass,
+            }
+        }
+    },
+}
+</script>
+```
+
+- [x] `:style`
+
+添加行内样式。可以实现数据驱动样式。由于是在JS里写的样式。就可以用根据数据动态改变CSS的属性值。
+
+```html
+<!--绑定一个对象-->
+<div :style="styleObj"></div>
+<!--绑定计算属性-->
+<div :style="creatStyle(100)"></div>
+<!--数组语法-->
+<div :style="[styleObj]"></div>
+
+<script>
+export default {
+    data() {
+        return {
+            styleObj: {
+                color: 'red',
+                'font-size': '13px'
+            }
+        }
+    },
+    computed: {
+        creatStyle(width) {
+            return {
+                width: `${width / 46.875}rem`
+            };
+        },
+    },
+}
+</script>
+```
