@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<meta http-equiv='X-UA-Compatible' content='ie=edge'>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<style>
+    .aaa {
+        color: red;
+    }
+</style>
+<title>class绑定计算属性传参数测试</title>
+</head>
+<body>
+    <div id="app">
+        <p>:class="computedFuntion"的时候，这个计算属性是不能传参数的。传了行参，不去使用都会报错的。传了参数直接去使用也是会报错的。会报这个计算属性不是一个function。</p>
+        <p>同样的情况下，使用方法methods就没有问题</p>
+        <p>解决方法：使用闭包，返回一个函数，如代码</p>
+        <div class="item" v-for="(item, index) in 2" :class="addClass(index)">{{item}}{{currentIndex}}</div>
+    </div>
+
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            currentIndex: 1,
+        },
+        computed: {
+            addClass() {
+                return (index) => {
+                    if (index === this.currentIndex) {
+                        return 'aaa';
+                    }
+                    return;
+                };
+            },
+        },
+    });
+</script>
+</body>
+</html>
