@@ -38,6 +38,7 @@
 
 ### align-content
 上面例子都是有换行的。其实就是有多个主轴了。这个属性就相当于将每一个有主轴的模块当作整个父容器的子项目，起到了justify-content类似的作用。
+
 ![image](http://h0.hucdn.com/open201910/9e7b1cdcc88a7ca6_1000x758.png)
 ![image](http://h0.hucdn.com/open201910/65d12cd7487d0481_992x754.png)
 ![image](http://h0.hucdn.com/open201910/4225901658e60022_1000x750.png)

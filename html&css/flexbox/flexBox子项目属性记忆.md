@@ -12,6 +12,7 @@
 ### 3⃣️️flex-shrink
 默认所有项目的该值都为1.即当空间不足时，所有的项目都将缩小。
 ![image](http://h0.hucdn.com/open201910/bad8cd4b8ad51793_434x396.png)
+
 当某个项目设置`flex-shrink`值为0时，该项目将不会缩小。
 ![image](http://h0.hucdn.com/open201910/f2dc144f111e6c73_430x406.png)
 
