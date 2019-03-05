@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hilo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .container {
+            width: 320px;
+            height: 480px;
+        }
+    </style>
+    <script src="./hilo-standalone.js"></script>
+</head>
+<body>
+    <div class="container"></div>
+    
+<script>
+    const renderType = 'canvas';
+    const container = document.getElementsByClassName('container')[0];
+    let ticker;
+    let stage = new Hilo.Stage({
+        renderType,
+        container,
+        width: 320,
+        height: 480
+    });
+    ticker = new Hilo.Ticker(60);
+    ticker.addTick(stage);
+    ticker.start();
+    let bird = new Hilo.Bitmap({
+        image: './tree.jpg'
+    }).addTo(stage);
+    stage.enableDOMEvent(Hilo.event.POINTER_START, true);
+    stage.on(Hilo.event.POINTER_START, function(e){
+        console.log(e.eventTarget, e.stageX, e.stageY);
+    });
+</script>
+</body>
+</html>
