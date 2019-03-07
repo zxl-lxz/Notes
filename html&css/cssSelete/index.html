@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css选择器</title>
+    <style>
+        .div2 + p{
+            color: red;
+        }
+        a:link {color: blue;}
+        a:visited {
+            color: red;
+        }
+        a:hover {
+            color: green;
+        }
+        a:active {
+            color: yellow;
+        }
+        input {
+            display: block;
+        }
+        input:focus {
+            width: 300px;
+            border: none;
+        }
+        .p1 {
+            width: 200px;
+        }
+        .p1::first-line {
+            font-size: 32px;
+        }
+        .p1::first-letter {
+            background-color: grey;
+            color: red;
+            font-size: 40px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <div class="div2">222</div>
+    <p>111</p>
+    <p>111</p>
+    <div class="div2">222</div>
+    <p>111</p>
+
+    <a href="https://www.baidu.com">link</a>
+
+    <input type="text">
+
+    <p class="p1">哈哈哈哈哈哈哈哈哈哈哈哈哈hahahahahahahahahhahahahahahahahahaha</p>
+</body>
+</html>
