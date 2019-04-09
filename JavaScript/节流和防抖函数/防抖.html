@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>防抖</title>
+    <style>
+        .content {
+            width: 400px;
+            height: 400px;
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="content"></div>
+    <script>
+        const Octx = document.querySelector('.content');
+        const myFun = function(e) {
+            console.log(this, e);
+        };
+
+        const debounce =  (fun, wait = 500, immediate) => {
+            let timer = null;
+            console.log('ddd');
+            return function(...args) {
+                if (timer) {
+                    clearTimeout(timer);
+                }
+                if (immediate) {
+                    let callNomw = !timer;
+                    timer = setTimeout(() => {
+                        timer = null;
+                    }, wait);
+                    if (callNomw) {
+                        fun.apply(this, args);
+                    }
+                } else {
+                    timer = setTimeout(() => {
+                        fun.apply(this, args);
+                    }, wait);
+                }
+            };
+        };
+        Octx.addEventListener('mousemove', debounce(myFun, 5000, true));
+    </script>
+</body>
+</html>
