@@ -1,0 +1,24 @@
+{
+  "name": "notes",
+  "version": "1.0.0",
+  "description": "notes",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^5.16.0",
+    "vue": "^2.6.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1282772905/Notes.git"
+  },
+  "author": "ZhouLiang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1282772905/Notes/issues"
+  },
+  "homepage": "https://github.com/1282772905/Notes#readme"
+}
