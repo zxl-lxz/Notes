@@ -8,3 +8,4 @@
 - [x] [防抖](https://github.com/1282772905/Notes/blob/master/JavaScript/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%87%BD%E6%95%B0/%E9%98%B2%E6%8A%96.md)
 - [x] [节流](https://github.com/1282772905/Notes/blob/master/JavaScript/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%87%BD%E6%95%B0/%E8%8A%82%E6%B5%81.md)
 - [x] [BFC](https://github.com/1282772905/Notes/blob/master/html%26css/BFC/bfc.md)
+- [x] [水平垂直居中](https://github.com/1282772905/Notes/blob/master/html%26css/%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/index.md)
