@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            min-width: 550px;
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            padding: 0 150px 0 200px;
+        }
+        .mid {
+            float: left;
+            width: 100%;
+            height: 300px;
+            background-color: burlywood;
+        }
+        .left {
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin-left: -100%;
+            position: relative;
+            right: 200px;
+            background-color: cadetblue;
+        }
+        .right {
+            float: left;
+            margin-right: -150px;
+            width: 150px;
+            height: 400px;
+            background-color: cyan;
+        }
+    </style>
+    <title>圣杯布局</title>
+</head>
+<body>
+    <!-- 三栏布局，中间的为主要部分，需要放在DOM结构前面，优先渲染 -->
+    <div class="container">
+        <div class="mid">
+            mid
+        </div>
+        <div class="left">
+            left
+        </div>
+        <div class="right">
+            right
+        </div>
+    </div>
+</body>
+</html>

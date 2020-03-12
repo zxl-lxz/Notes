@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+        .wrap {
+            display: flex;
+        }
+        .mid {
+            flex: 1;
+            height: 300px;
+            background-color: darkkhaki;
+        }
+        .left {
+            order: -1;
+            width: 200px;
+            height: 200px;
+            background-color: darkmagenta;
+        }
+        .right {
+            width: 150px;
+            height: 300px;
+            background-color: darksalmon;
+        }
+    </style>
+    <title>flex代替浮动实现三栏布局</title>
+</head>
+<body>
+    <!-- order越小越靠前 -->
+    <div class="wrap">
+        <div class="mid">mid</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+</body>
+</html>

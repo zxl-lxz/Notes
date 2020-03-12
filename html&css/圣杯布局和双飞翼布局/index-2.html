@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            min-width: 550px;
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            width: 100%;
+            float: left;
+        }
+        .mid {
+            height: 300px;
+            background-color: darkkhaki;
+            margin-left: 200px;
+            margin-right: 150px;
+        }
+        .left {
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin-left: -100%;
+            background-color: cyan;
+        }
+        .right {
+            float: left;
+            width: 150px;
+            height: 300px;
+            margin-left: -150px;
+            background-color: darkblue;
+        }
+    </style>
+    <title>双飞翼布局</title>
+</head>
+<body>
+    <!-- 三栏布局，中间的为主要部分，需要放在DOM结构前面，优先渲染 -->
+    <div class="container">
+        <div class="mid">
+            mid
+        </div>
+    </div>
+    <div class="left">
+        left
+    </div>
+    <div class="right">
+        right
+    </div>
+</body>
+</html>
