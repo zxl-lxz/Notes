@@ -17,6 +17,7 @@ const fun2 = (min, max) => {
 // 两个数之间的随机整数，包含两个数
 const fun3 = (min, max) => {
     min = Math.ceil(min);
+
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1 )) + min;
 };
