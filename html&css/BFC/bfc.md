@@ -15,6 +15,7 @@ BFC是块盒子的布局区域，是浮动元素与其它元素交互的区域�
 - 根元素（html）本身就是一个BFC
 - 浮动元素（float值为left/right）
 - 绝对定位元素（position值为absolute/fixed）
+- overflow取值不为visible
 - display的值取以下值
     - `inline-block`
     - `table-cell`,`table-caption`,`table`,`table-row`,`table-row-group`,`table-header-group`,`table-footer-group`
