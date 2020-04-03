@@ -45,4 +45,5 @@ let deepClone = (obj, cache= []) => {
     for (let k in obj) {
         newObj[k] = deepClone(obj[k], cache);
     }
+    return newObj;
 }
