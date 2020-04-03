@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件传播机制</title>
+    <style>
+        .wrap {
+            width: 200px;
+            height: 200px;
+            background-color: black;
+        }
+        .item {
+            width: 100px;
+            height: 100px;
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="item"></div>
+    </div>
+    <script>
+        const wrap = document.querySelector('.wrap');
+        const item = document.querySelector('.item');
+        let a = 0;
+        wrap.addEventListener('click', () => {
+            a++;
+        }, true);
+        item.addEventListener('click', (e) => {
+            a++;
+        }, true);
+        wrap.addEventListener('click', () => {
+            a++;
+            console.log(a);
+        }, false);
+        item.addEventListener('click', (e) => {
+            a++;
+        }, false);
+    </script>
+</body>
+</html>
