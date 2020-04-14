@@ -47,3 +47,19 @@ const _new = (Fn, ...arg) => {
     return typeof result === 'object' ? result : obj;
 }
 
+
+let fun = (obj1, obj2) => {
+    let restlt = {};
+    for (let k in obj1) {
+        if (typeof obj1[k] === 'string' || Object.prototype.toString.call(obj1[k]).slice(8, -1) === 'Object') {
+            result[k] = obj2[k];
+        }
+        if (obj1[k] instanceof Array) {
+            result[k] = [...new Set(obj1[k].concat(obj2[k]))];
+        }
+        if (typeof obj1[k] === 'boolean') {
+            result[k] = obj1[k];
+        }
+    }
+    return result;
+}
