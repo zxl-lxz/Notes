@@ -47,19 +47,28 @@ const _new = (Fn, ...arg) => {
     return typeof result === 'object' ? result : obj;
 }
 
-
-let fun = (obj1, obj2) => {
-    let restlt = {};
-    for (let k in obj1) {
-        if (typeof obj1[k] === 'string' || Object.prototype.toString.call(obj1[k]).slice(8, -1) === 'Object') {
-            result[k] = obj2[k];
-        }
-        if (obj1[k] instanceof Array) {
-            result[k] = [...new Set(obj1[k].concat(obj2[k]))];
-        }
-        if (typeof obj1[k] === 'boolean') {
-            result[k] = obj1[k];
-        }
+// 点击平滑滚动
+const scrollSmoothTo = (targetPosition) => {
+    if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = (callback) => setTimeout(callback, 20);
     }
-    return result;
+    // 当前文档滚动高度
+    let scrollTop = window.documentElement.scrollTop || window.body.scrollTop;
+
+    const step = () => {
+        // 距离目标还差多少距离
+        let distance = targetPosition - scrollTop;
+
+        // 下一步要滚动到的高度
+        scrollTop = scrollTop + (distance / 6);
+
+        // 边界处理
+        if (Math.abs(distance) < 1) {
+            window.scrollTo(0, targetPosition);
+        } else {
+            window.scrollTo(0, scrollTop);
+            window.requestAnimationFrame(step);
+        }
+    };
+    step();
 }
