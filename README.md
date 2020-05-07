@@ -12,3 +12,4 @@
 - [x] [Set&Map](https://github.com/1282772905/Notes/blob/master/JavaScript/Set%2CMap%2CWeakSet%2CWeakMap/Set%26Map.md#set%E7%9A%84%E5%B1%9E%E6%80%A7)
 - [x] [清除浮动](https://github.com/1282772905/Notes/blob/master/html%26css/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/inedx.html)
 - [x] [深拷贝（所有数据类型和防止循环调用）](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%B7%B1%E6%8B%B7%E8%B4%9D/index.js)
+- [x] [Vue双向绑定原理](https://github.com/1282772905/Notes/blob/master/Vue/Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86.md)
