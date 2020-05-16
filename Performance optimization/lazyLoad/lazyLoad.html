@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lazyLoad</title>
+    <link rel="stylesheet" href="../../html&css/common/reset.css">
+    <style>
+        .placeholder {
+            height: 1600px;
+            background-color: bisque;
+            line-height: 1600px;
+            color: black;
+            font-size: 60px;
+            font-weight: bolder;
+            text-align: center;
+        }
+        .imgs {
+            background-color: coral;
+        }
+        img {
+            width: 480px;
+            height: 270px;
+        }
+    </style>
+</head>
+<body>
+    <div class="placeholder">我的高度很高，以至于下面的图片不在视窗之内</div>
+    <div class="imgs">
+        <img src="" alt="imgs" lazyload data-src="./imgs/img5.jpg">
+        <img src="" alt="imgs" lazyload data-src="./imgs/img5.jpg">
+        <img src="" alt="imgs" lazyload data-src="./imgs/img5.jpg">
+        <img src="" alt="imgs" lazyload data-src="./imgs/img5.jpg">
+        <img src="" alt="imgs" lazyload data-src="./imgs/img5.jpg">
+        <img src="" alt="imgs" lazyload data-src="./imgs/img5.jpg">
+    </div>
+    
+    <script>
+        let viewHeight = document.documentElement.clientHeight || window.innerHeight; // 可视区域（视窗）高度
+        function lazyLoad() {
+            // 获取所有有lazyload和data-src属性的img标签
+            let eles = document.querySelectorAll('img[data-src][lazyload]');
+            // eles是一个类数组
+            Array.prototype.forEach.call(eles, (item) => {
+                if (item.dataset.src === '') {
+                    return;
+                }
+                // 这个属性获取元素左右上下距离视窗的边界的距离，返回一个object
+                let firstoffset = 10;
+                let rec = item.getBoundingClientRect();
+                if ((rec.bottom >= firstoffset) && (rec.top <= viewHeight + firstoffset)) {
+                    let image = new Image();
+                    image.src = item.dataset.src;
+                    image.onload = () => {
+                        item.src = image.src; 
+                    }
+                    item.removeAttribute('data-src');
+                    item.removeAttribute('lazyload');
+                }
+            });
+        };
+        lazyLoad();
+        window.addEventListener('scroll', lazyLoad);
+    </script>
+</body>
+</html>
