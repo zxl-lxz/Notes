@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag&Drop</title>
+    <link rel="stylesheet" href="../../html&css/common/reset.css">
+    <style>
+        .modal-a {
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+        }
+        .target {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #333333;
+        }
+    </style>
+</head>
+<body>
+    <div class="modal-a" draggable="true">
+        I can be Draged
+    </div>
+    <div class="target"></div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const ele = document.querySelector('.modal-a');
+            const target = document.querySelector('.target');
+
+            // 拖拽开始
+            ele.addEventListener('dragstart', (e) => {
+                e.target.style.border = '1px solid #333333';
+                e.dataTransfer.setData('text/plain', e.target.className);
+                e.dataTransfer.effectAllowed = 'copy';
+            });
+
+            // 鼠标松开，放入
+            target.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const data = e.dataTransfer.getData('text/plain');
+                const nodeCopy = document.querySelector(`.${data}`).cloneNode(true);
+                e.target.appendChild(nodeCopy);
+            });
+
+            // 当拖着的元素，处在要放置的目标元素的上方时。此时还没有松开鼠标。
+            target.addEventListener('dragover', (e) => {
+                e.target.style.background = '#eeeeee';
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'copy';
+            });
+            
+            // 放入结束。
+            ele.addEventListener('dragend', (e) => {
+                e.dataTransfer.clearData();
+            });
+        });
+    </script>
+</body>
+</html>
