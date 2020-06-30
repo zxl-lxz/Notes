@@ -18,11 +18,11 @@
 - [x] [深拷贝（所有数据类型和防止循环调用）](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%B7%B1%E6%8B%B7%E8%B4%9D/index.js)
 - [x] [拖放元素到页面任意位置](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%8B%96%E6%94%BE/index.html)
 - [x] [手写 new](https://github.com/1282772905/Notes/blob/master/JavaScript/new.js)
-- [x] [自定义指令](https://github.com/1282772905/Notes/blob/master/Vue/directives.md)
 
 ## [Vue](https://github.com/1282772905/Notes/tree/master/Vue)
 
 - [x] [Vue 双向绑定原理](https://github.com/1282772905/Notes/blob/master/Vue/Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86.md)
+- [x] [自定义指令](https://github.com/1282772905/Notes/blob/master/Vue/directives.md)
 
 ## [React](https://github.com/1282772905/Notes/tree/master/React)
 
