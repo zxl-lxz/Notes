@@ -1,73 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drag&Drop</title>
-    <link rel="stylesheet" href="../../html&css/common/reset.css" />
-    <style>
-      body {
-        height: 2000px;
-      }
-      .modal-a {
-        position: fixed;
-        bottom: 100px;
-        right: 100px;
-        width: 200px;
-        height: 200px;
-        background-color: brown;
-      }
-    </style>
-  </head>
 
-  <body>
-    <div class="modal-a" draggable="true">
-      I can be Draged to anyWhere
-    </div>
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        const ele = document.querySelector('.modal-a')
-        const bodyContent = document.body
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Drag&Drop</title>
+	<link rel="stylesheet" href="../../html&css/common/reset.css" />
+	<style>
+		body {
+			height: 2000px;
+		}
 
-        // 拖拽开始
-        ele.addEventListener('dragstart', (e) => {
-          e.dataTransfer.effectAllowed = 'move'
+		.modal-a {
+			position: fixed;
+			bottom: 100px;
+			right: 100px;
+			width: 200px;
+			height: 200px;
+			background-color: brown;
+		}
+	</style>
+</head>
 
-          // e.pageX 为鼠标点击的时候，指针距离整个文档左边缘的距离。（不是窗口左边缘，而是整个文档左边缘。如果有横向的滚动条，滚动距离也要计算）
-          e.dataTransfer.setData('startX', e.pageX)
+<body>
+	<div class="modal-a" draggable="true">
+		I can be Draged to anyWhere
+	</div>
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			const ele = document.querySelector('.modal-a')
+			const bodyContent = document.body
 
-          // e.pageY 为鼠标点击的时候，指针距离整个文档顶部的距离。也要计算滚动高度。
-          e.dataTransfer.setData('startY', e.pageY)
+			// 拖拽开始
+			ele.addEventListener('dragstart', (e) => {
+				e.dataTransfer.effectAllowed = 'move'
 
-          // e.offsetLeft 相对与其offsetParent元素的内边距离.
-          /* offsetParent: 最近的包涵该子元素的定位元素或者table、td、th、body元素。如果子元素为position:fixed，那么该属性返回null.
-		  	在谷歌内核浏览器中，如果包涵该子元素的父元素display为none,那么该属性也返回null.
-			  虽然返回null，但是不影响获取offsetLeft等值
-		  */
-          e.dataTransfer.setData('left', e.target.offsetLeft)
-          e.dataTransfer.setData('top', e.target.offsetTop)
-        })
+				// e.pageX 为鼠标点击的时候，指针距离整个文档左边缘的距离。（不是窗口左边缘，而是整个文档左边缘。如果有横向的滚动条，滚动距离也要计算）
+				e.dataTransfer.setData('startX', e.pageX)
 
-        // 鼠标松开，放入
-        bodyContent.addEventListener('drop', (e) => {
-			e.preventDefault();
-			ele.style.top = `${e.dataTransfer.getData('top') - (e.dataTransfer.getData('startY') - e.pageY)}px`;
-			ele.style.bottom = 'unset';
-			ele.style.right = 'unset';
-			ele.style.left = `${e.dataTransfer.getData('left') - (e.dataTransfer.getData('startX') - e.pageX)}px`;
-        })
+				// e.pageY 为鼠标点击的时候，指针距离整个文档顶部的距离。也要计算滚动高度。
+				e.dataTransfer.setData('startY', e.pageY)
 
-        // 当拖着的元素，处在要放置的目标元素的上方时。此时还没有松开鼠标。
-        bodyContent.addEventListener('dragover', (e) => {
-          e.preventDefault()
-          e.dataTransfer.dropEffect = 'move'
-        })
+				// e.offsetLeft 相对与其offsetParent元素的内边距离.
+				/* offsetParent: 最近的包涵该子元素的定位元素或者table、td、th、body元素。如果子元素为position:fixed，那么该属性返回null.
+		  		在谷歌内核浏览器中，如果包涵该子元素的父元素display为none,那么该属性也返回null.
+			  	虽然返回null，但是不影响获取offsetLeft等值
+		  		*/
+				e.dataTransfer.setData('left', e.target.offsetLeft)
+				e.dataTransfer.setData('top', e.target.offsetTop)
+			})
 
-        // 放入结束。
-        ele.addEventListener('dragend', (e) => {
-          e.dataTransfer.clearData()
-        })
-      })
-    </script>
-  </body>
+			// 鼠标松开，放入
+			bodyContent.addEventListener('drop', (e) => {
+				e.preventDefault();
+				ele.style.top =
+					`${e.dataTransfer.getData('top') - (e.dataTransfer.getData('startY') - e.pageY)}px`;
+				ele.style.bottom = 'unset';
+				ele.style.right = 'unset';
+				ele.style.left =
+					`${e.dataTransfer.getData('left') - (e.dataTransfer.getData('startX') - e.pageX)}px`;
+			})
+
+			// 当拖着的元素，处在要放置的目标元素的上方时。此时还没有松开鼠标。
+			bodyContent.addEventListener('dragover', (e) => {
+				e.preventDefault()
+				e.dataTransfer.dropEffect = 'move'
+			})
+
+			// 放入结束。
+			ele.addEventListener('dragend', (e) => {
+				e.dataTransfer.clearData()
+			})
+		})
+	</script>
+</body>
+
 </html>
