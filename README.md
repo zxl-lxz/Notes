@@ -10,19 +10,18 @@
 
 ## [JavaScript](https://github.com/1282772905/Notes/tree/master/JavaScript)
 
-- [x] [发布订阅](https://github.com/1282772905/Notes/blob/master/JavaScript/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.md)
-- [x] [堆栈和事件循环](https://github.com/1282772905/Notes/blob/master/JavaScript/%E5%A0%86%E6%A0%88%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF.md)
-- [x] [防抖](https://github.com/1282772905/Notes/blob/master/JavaScript/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%87%BD%E6%95%B0/%E9%98%B2%E6%8A%96.md)
-- [x] [节流](https://github.com/1282772905/Notes/blob/master/JavaScript/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%87%BD%E6%95%B0/%E8%8A%82%E6%B5%81.md)
-- [x] [Set&Map](https://github.com/1282772905/Notes/blob/master/JavaScript/Set%2CMap%2CWeakSet%2CWeakMap/Set%26Map.md#set%E7%9A%84%E5%B1%9E%E6%80%A7)
+- [x] [发布订阅](https://github.com/1282772905/Notes/blob/master/JavaScript/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.md)
+- [x] [堆栈和事件循环](https://github.com/1282772905/Notes/blob/master/JavaScript/%E5%A0%86%E6%A0%88%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/%E5%A0%86%E6%A0%88%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF.md)
+- [x] [防抖和节流](https://github.com/1282772905/Notes/tree/master/JavaScript/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%87%BD%E6%95%B0)
+- [x] [Set&Map](https://github.com/1282772905/Notes/blob/master/JavaScript/Set%2CMap%2CWeakSet%2CWeakMap/Set%26Map.md)
 - [x] [深拷贝（所有数据类型和防止循环调用）](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%B7%B1%E6%8B%B7%E8%B4%9D/index.js)
 - [x] [拖放元素到页面任意位置](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%8B%96%E6%94%BE/index.html)
-- [x] [手写 new](https://github.com/1282772905/Notes/blob/master/JavaScript/new.js)
+- [x] [手写 new](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%89%8B%E5%86%99new/new.js)
 
 ## [Vue](https://github.com/1282772905/Notes/tree/master/Vue)
 
-- [x] [Vue 双向绑定原理](https://github.com/1282772905/Notes/blob/master/Vue/Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86.md)
-- [x] [自定义指令](https://github.com/1282772905/Notes/blob/master/Vue/directives.md)
+- [x] [Vue 双向绑定原理](https://github.com/1282772905/Notes/blob/master/Vue/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86.md)
+- [x] [自定义指令](https://github.com/1282772905/Notes/blob/master/Vue/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/directives.md)
 
 ## [React](https://github.com/1282772905/Notes/tree/master/React)
 
