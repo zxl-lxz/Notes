@@ -10,10 +10,7 @@
 
 <body>
     <div id="app">
-        <div v-for="(item, index) in lists" :key="item">
-            <label :for="item">{{item}}</label>
-            <input :id="item" type="checkbox">
-        </div>
+        <input v-for="(item, index) in lists" :key="item" :placeholder="item" type="text">
         <button @click="add">添加</button>
     </div>
     <script>
