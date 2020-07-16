@@ -17,6 +17,7 @@
 - [x] [深拷贝（所有数据类型和防止循环调用）](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%B7%B1%E6%8B%B7%E8%B4%9D/index.js)
 - [x] [拖放元素到页面任意位置](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%8B%96%E6%94%BE/index.html)
 - [x] [手写 new](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%89%8B%E5%86%99new/new.js)
+- [x] [闭包](https://github.com/1282772905/Notes/blob/master/JavaScript/%E9%97%AD%E5%8C%85/index.md)
 
 ## [Vue](https://github.com/1282772905/Notes/tree/master/Vue)
 
