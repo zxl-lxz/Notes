@@ -10,14 +10,15 @@
 
 ## [JavaScript](https://github.com/1282772905/Notes/tree/master/JavaScript)
 
+- [x] [闭包](https://github.com/1282772905/Notes/blob/master/JavaScript/%E9%97%AD%E5%8C%85/index.md)
+- [x] [原型链（创建对象的方式）](https://github.com/1282772905/Notes/blob/master/JavaScript/%E5%8E%9F%E5%9E%8B%E9%93%BE/index.md)
+- [x] [继承](https://github.com/1282772905/Notes/blob/master/JavaScript/%E7%BB%A7%E6%89%BF%EF%BC%88ES5%EF%BC%89/index.md)
+- [x] [手写 new](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%89%8B%E5%86%99new/new.js)
 - [x] [发布订阅](https://github.com/1282772905/Notes/blob/master/JavaScript/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.md)
 - [x] [堆栈和事件循环](https://github.com/1282772905/Notes/blob/master/JavaScript/%E5%A0%86%E6%A0%88%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/%E5%A0%86%E6%A0%88%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF.md)
 - [x] [防抖和节流](https://github.com/1282772905/Notes/tree/master/JavaScript/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96%E5%87%BD%E6%95%B0)
-- [x] [Set&Map](https://github.com/1282772905/Notes/blob/master/JavaScript/Set%2CMap%2CWeakSet%2CWeakMap/Set%26Map.md)
 - [x] [深拷贝（所有数据类型和防止循环调用）](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%B7%B1%E6%8B%B7%E8%B4%9D/index.js)
 - [x] [拖放元素到页面任意位置](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%8B%96%E6%94%BE/index.html)
-- [x] [手写 new](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%89%8B%E5%86%99new/new.js)
-- [x] [闭包](https://github.com/1282772905/Notes/blob/master/JavaScript/%E9%97%AD%E5%8C%85/index.md)
 
 ## [Vue](https://github.com/1282772905/Notes/tree/master/Vue)
 
