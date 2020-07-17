@@ -11,7 +11,7 @@
 ## [JavaScript](https://github.com/1282772905/Notes/tree/master/JavaScript)
 
 - [x] [闭包](https://github.com/1282772905/Notes/blob/master/JavaScript/%E9%97%AD%E5%8C%85/index.md)
-- [x] [原型链（创建对象的方式）](https://github.com/1282772905/Notes/blob/master/JavaScript/%E5%8E%9F%E5%9E%8B%E9%93%BE/index.md)
+- [x] [原型链（创建对象的方式、_proto_与prototype）](https://github.com/1282772905/Notes/blob/master/JavaScript/%E5%8E%9F%E5%9E%8B%E9%93%BE/index.md)
 - [x] [继承](https://github.com/1282772905/Notes/blob/master/JavaScript/%E7%BB%A7%E6%89%BF%EF%BC%88ES5%EF%BC%89/index.md)
 - [x] [手写 new](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%89%8B%E5%86%99new/new.js)
 - [x] [发布订阅](https://github.com/1282772905/Notes/blob/master/JavaScript/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.md)

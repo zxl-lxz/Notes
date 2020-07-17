@@ -1,6 +1,10 @@
-# 原型链（JS最全创建对象方式汇总）
+# 原型链
 
-## 1.最简单的方式--创建一个Object实例
+从 `JS创建对象的方式` 这个角度，理解原型和原型链。
+
+## JS创建对象的方式
+
+### 1.最简单的方式--创建一个Object实例
 
 ```js
 var person = new Object();     //创建实例
@@ -11,7 +15,7 @@ person.sayName = function(){   //添加方法
 }
 ```
 
-## 2.对象字面量
+### 2.对象字面量
 
 ```javascript
 var person = {
@@ -26,7 +30,7 @@ var person = {
 
 **以上均为创建单个对象的方法，如果只需要少数具有不同属性和方法的对象，以上方法简单方便，但是当我们需要很多具有相似属性和方法的对象时，使用以上方法显然不切实际，因为会产生大量的重复代码。以下方法，便是为创建一类对象而生。**
 
-## 3.工厂模式
+### 3.工厂模式
 
 ```js
 function createPerson(name, age, job){
@@ -57,7 +61,7 @@ alert(personone instanceof createPerson);//false
 alert(personone instanceof Object);//true
 ```
 
-## 4.构造函数模式
+### 4.构造函数模式
 
 ```js
 function Person(name, age, job){
@@ -112,7 +116,7 @@ function sayName(){
 
 **这样的话，所有实例共享了在全局作用域中定义的函数方法。但是很显然的是，如果需要很多很多方法呢？以这种方法，岂不是需要定义很多很多全局函数？在全局中定义的函数，只能被某些对象调用，这让全局作用域有点名不副实。好在，这些问题，可以通过原型模式来解决。**
 
-## 5.原型模式
+### 5.原型模式
 
 ```js
 function Person(){};
@@ -155,7 +159,7 @@ alert(personone.friends == persontwo.friends);//true
 
 在第一的实例personone中重写引用类型值后，第二个实例所得到的原型上的引用类型值也被修改了，这显然不尽人意。所以很少有人单独使用原型模式。
 
-## 6.组合使用构造函数模式和原型模式
+### 6.组合使用构造函数模式和原型模式
 
 ```js
 function Person(name,age,job){
@@ -181,7 +185,7 @@ alert(personone.friends == persontwo.friends);//false
 
 这种模式将构造函数和原型分开，在构造函数里面写属性，在原型里面写方法，可以说，这是用来定义引用类型的一种默认模式，当然，有同学看到独立的构造函数和原型时，会感到困惑，下面这个模式，便解决了这个问题。
 
-## 7.动态原型模式
+### 7.动态原型模式
 
 ```js
 function Person(name,age,job){
@@ -198,7 +202,7 @@ function Person(name,age,job){
 
 这种模式方法确实非常完美，if判断代码只会在初次调用构造函数时才会执行，此后，原型已经初始化，不需要再做什么修改了。
 
-## 8.寄生构造函数模式
+### 8.寄生构造函数模式
 
 ```js
 function SpecialArray () {
@@ -216,7 +220,7 @@ console.log(colors instanceof SpecialArray) //false
 
 这种模式就是工厂模式去封装创建对象的代码。不过我们习惯叫这个函数为构造函数。而且使用`new`操作符创建新对象。需要注意的点是：**返回的对象与构造函数或者构造函数的原型属性之间没有关系**。也就是说，构造函数返回的对象与在构造函数外部创建的对象没有什么不同。**因此，不能依赖`instanceof`操作符来确定对象类型**。由于这个问题，可以使用上面介绍的模式，就不要使用这种模式。
 
-## 9.稳妥构造函数模式
+### 9.稳妥构造函数模式
 
 ```js
 function Person (name,age,job) {
@@ -229,3 +233,42 @@ function Person (name,age,job) {
 ```
 
 这种模式，创建`稳妥对象`：没有公共属性，而且其方法也不引用`this`的对象。除了使用`sayName`方法以外，没有任何其他办法访问`name`的值。常用于一些安全执行环境。
+
+说完了 `JS创建对象的方式`，接下来，我们来深入理解原型链。
+
+## `_proto_` 和 `prototype`
+
+**函数才有 `prototype`属性。一般对象只有 `_proto_`属性。对象的 `_proto_`属性，指向其构造函数的 `prototype`属性**
+
+为了理解上面这句话，我们举几个例子：
+
+```js
+let a  = {};
+a.prototype
+```
+
+![image](http://udh.oss-cn-hangzhou.aliyuncs.com/bbaba0dd-ecd5-43cc-a464-8e22ce1e026f)
+
+```js
+function Foo() {
+    this.name = 'Tom';
+}
+Foo.prototype
+```
+
+![image](http://udh.oss-cn-hangzhou.aliyuncs.com/7101c833-fe2b-47f3-8265-e05050f318e6)
+
+```
+let foo = new Foo();
+foo
+foo.prototype
+```
+
+![image](http://udh.oss-cn-hangzhou.aliyuncs.com/e15dc57b-36b6-47e1-9a5a-43fae894a767)
+
+现在应该明白了。
+
+当我们访问 `foo.toString()` 的时候，`foo`本身并没有 `toString` 这个方法，于是通过 `_proto_`指向其构造函数的`prototype`属性，也就是 `Foo.prototype` 去查找。结果 `Foo.prototype`也没有啊，于是又通过 `Foo._proto_` 指向 `Object.prototype`属性去查找。
+
+`🐶介不就是原型链嘛`
+
