@@ -247,7 +247,7 @@ let a  = {};
 a.prototype
 ```
 
-![image](http://udh.oss-cn-hangzhou.aliyuncs.com/bbaba0dd-ecd5-43cc-a464-8e22ce1e026f)
+![Markdown](http://i1.fuimg.com/723581/53173e1796b5c886.png)
 
 ```js
 function Foo() {
@@ -256,7 +256,7 @@ function Foo() {
 Foo.prototype
 ```
 
-![image](http://udh.oss-cn-hangzhou.aliyuncs.com/7101c833-fe2b-47f3-8265-e05050f318e6)
+![Markdown](http://i1.fuimg.com/723581/37929c05676b75d5.png)
 
 ```
 let foo = new Foo();
@@ -264,12 +264,9 @@ foo
 foo.prototype
 ```
 
-![image](http://udh.oss-cn-hangzhou.aliyuncs.com/e15dc57b-36b6-47e1-9a5a-43fae894a767)
-
+![Markdown](http://i1.fuimg.com/723581/180923f35eafcec6.png)
 现在应该明白了。
 
 当我们访问 `foo.toString()` 的时候，`foo`本身并没有 `toString` 这个方法，于是通过 `_proto_`指向其构造函数的`prototype`属性，也就是 `Foo.prototype` 去查找。结果 `Foo.prototype`也没有啊，于是又通过 `Foo._proto_` 指向 `Object.prototype`属性去查找。
 
 `🐶介不就是原型链嘛`
-
-![Markdown](http://i1.fuimg.com/723581/37929c05676b75d5.png)
