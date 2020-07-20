@@ -272,4 +272,4 @@ foo.prototype
 
 `🐶介不就是原型链嘛`
 
-![image](http://qdqyuigqx.bkt.clouddn.com/WX20200717-174638%402x.png)
+![Markdown](http://i1.fuimg.com/723581/37929c05676b75d5.png)
