@@ -72,3 +72,12 @@ const scrollSmoothTo = (targetPosition) => {
     };
     step();
 }
+
+// 函数柯里化
+
+let judge;
+const curry = function (fn) {
+    return judge = (...args) => fn.length === args.length ? fn.call(this, ...args) : (...nextArg) => judge(...args, ...nextArg)
+};
+
+
