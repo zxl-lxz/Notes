@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 用node.js开启server.js
+        // 因为webworker不能在本地工作。
+        // 浏览器将会在另一个单独的进程中执行worker.js.常用来处理需要长时间计算的数据。
+
+        /*在主页面与 Worker 之间传递的数据是通过拷贝，而不是共享来完成的。传递给 Worker 的对象需要经过序列化，接下来在另一端还需要反序列化。页面与 Worker 不会共享同一个实例，最终的结果就是在每次通信结束时生成了数据的一个副本。
+        也就是说，Worker 与其主页面之间只能单纯的传递数据，不能传递复杂的引用类型：如通过构造函数创建的对象等。并且，传递的数据也是经过拷贝生成的一个副本，在一端对数据进行修改不会影响另一端。
+
+        作者：考拉海购前端团队
+        链接：https://juejin.im/post/6844903496550989837
+        来源：掘金
+        著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+        */
+        if (window.Worker) {
+            const arr = [1];
+            let myWorker = new Worker('./worker.js');
+            myWorker.postMessage(arr);
+            myWorker.onmessage = (e) => {
+                console.log(e.data, arr);
+            }
+        }
+    </script>
+</body>
+
+</html>
