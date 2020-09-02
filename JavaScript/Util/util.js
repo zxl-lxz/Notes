@@ -80,4 +80,12 @@ const curry = function (fn) {
     return judge = (...args) => fn.length === args.length ? fn.call(this, ...args) : (...nextArg) => judge(...args, ...nextArg)
 };
 
+// 去除对象数组中，对象某个属性重复的项
+const mergeList = (addList, list, attr) => {
+    const newsetList = addList.filter((item) => {
+        return list.every((citem) => citem[attr] !== item[attr]);
+    });
+    return [...list, ...newsetList]
+}
+
 
