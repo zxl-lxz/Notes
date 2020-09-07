@@ -21,6 +21,7 @@
 -   [x] [拖放元素到页面任意位置](https://github.com/1282772905/Notes/blob/master/JavaScript/%E6%8B%96%E6%94%BE/index.html)
 -   [x] [Promise](https://github.com/1282772905/Notes/blob/master/JavaScript/Promise/use.md)
 -   [x] [let const var](https://github.com/1282772905/Notes/blob/master/JavaScript/var%20let%20const/index.md)
+-   [x] [Proxy 和 defineProperty](https://github.com/1282772905/Notes/tree/master/JavaScript/Proxy)
 
 ## [Vue](https://github.com/1282772905/Notes/tree/master/Vue)
 
