@@ -22,6 +22,7 @@
 -   [x] [Promise](https://github.com/1282772905/Notes/blob/master/JavaScript/Promise/use.md)
 -   [x] [let const var](https://github.com/1282772905/Notes/blob/master/JavaScript/var%20let%20const/index.md)
 -   [x] [Proxy 和 defineProperty](https://github.com/1282772905/Notes/tree/master/JavaScript/Proxy)
+-   [x] [async await](https://github.com/1282772905/Notes/blob/master/JavaScript/async%20await/index.md)
 
 ## [Vue](https://github.com/1282772905/Notes/tree/master/Vue)
 
