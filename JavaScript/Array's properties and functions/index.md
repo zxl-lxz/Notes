@@ -397,3 +397,213 @@ const flat = (arr, deep = 1) => {
         : arr.slice();
 };
 ```
+
+## Array.prototype.forEach()
+
+关键词: `无法中断循环`、`调用前确认遍历的元素范围`、`不会改变原数组（引用传递有可能改变）`、`返回undefined`、`无法进行链式调用`
+
+深入理解，参考`every`
+
+需要注意的是 `无法中断循环` 这一点。与之相反的，以下遍历操作都可以跳出循环
+
+`for`、`for...in`、`for...of`、`every()`、`some()`、`find()`、`findIndex()`
+
+## Array.prototype.includes()
+
+关键词: `检测数组是否包含某个值`
+
+```js
+// 基本用法
+const arr = [1, 2, 3];
+arr.includes(1); // true
+
+// 第二个参数大于数组长度
+arr.includes(1, 1000); // false
+
+// 第二个参数为负数
+arr.includes(2, -2); // 相当于(2, (-2 + 3)) true
+arr.includes(2, -100); // 相当于(2, 0)
+
+// 针对NaN
+const arr1 = [NaN];
+arr1.includes(NaN); // true
+```
+
+## Array.prototype.indexOf()
+
+关键词: `检测数组是否包含某个值`
+
+关于第二个参数为负值，参考`includes()`
+
+需要注意的是，内部采用 `===` 做判断。
+
+## Array.prototype.join()
+
+关键词: `数组转字符串`
+
+```js
+// 基础用法
+const arr = [1, 2, 3];
+
+arr.join(); // 不传参数，默认使用英文逗号 '1,2,3'
+
+arr.join(""); // '123'
+
+arr.join("-"); // '1-2-3'
+
+// undefined和null会被转换为空字符串
+const arr1 = [1, undefined, null, 1];
+arr1.join(); // '1,,,1'
+```
+
+## Array.prototype.map()
+
+深度解析参考`every`。
+
+原数组的每一项调用函数，结果组成新数组返回。
+
+## Array.prototype.pop()
+
+与 `Array.prototype.shift()`一起。
+
+`pop` 是删除末尾。`shift` 是删除首个。
+
+关键词: `返回值为删除的这一项`
+
+```js
+const arr = [1, 2, 3];
+const deleteNum = arr.pop();
+
+arr // [1, 2]
+deleteNum // 3
+
+// 作用于类数组
+[].pop.call(arguments);
+
+// 空数组调用此方法返回undefined
+[].pop(); // undefined
+```
+
+## Array.prototype.push()
+
+与 `Array.prototype.unshift()`（首添加） 一起。
+
+关键词: `添加项`、`返回数组新长度`
+
+```js
+const arr = [1, 2, 3];
+const newLength = arr.push(4, 5, 6);
+arr // [1, 2, 3, 4, 5, 6]
+newLength // 6
+
+// 可作用域类数组，但是原声的类数组String却不行
+[].push.call(arguments, 1); // ok
+[].push.call('123', 4, 5); // 报错
+```
+
+## Array.prototype.reduce()
+
+关键词: `汇总`
+
+```js
+const arr = [1, 2, 3];
+const addNum = arr.reduce((acc, cur) => acc + cur); // 6
+
+// 以上代码：acc首先取值为1，cur取值为2.两者相加的值赋值给下一轮的acc。第二轮的时候，acc的值为3，cur的值为3.两者相加为6.由于没有更多项去执行，于是将acc返回。
+```
+
+需要注意的是，可以为 `acc` 提供首轮的初始值。并且提倡这么做。
+
+```js
+const arr = [1, 2, 3];
+const addNum = arr.reduce((acc, cur) => acc + cur, 10); // 16
+```
+
+其深度分析的特性，像是一开始的`迭代范围`，`引用类型`等等与`every`保持一致。
+
+## Array.prototype.reverse()
+
+关键词: `颠倒数组`、`改变原数组`、`返回原数组的引用`
+
+```js
+const arr = [1, 2, 3];
+const arr1 = arr.reverse();
+
+arr; // [3, 2, 1]
+arr1; // [3, 2, 1]
+```
+
+## Array.prototype.slice()
+
+关键词: `截取`、`返回新数组`、`浅克隆`
+
+关键词里的新数组和浅克隆所代表的含义就不多解释里。参考`every`。
+
+```js
+const arr = [1, 2, 3];
+const sliceArr = arr.slice(1); // [2, 3]
+
+// 第一个参数为负数
+arr.slice(-1); // 相当于(2) 返回[3]
+
+// 第一个参数大于length
+
+arr.slice(100); // []
+
+// 第二个参数为负数
+arr.slice(0, -1); // 相当于(0, 2) 返回[1, 2]
+
+// 第二个参数太小
+arr.slice(0, -100); // []
+```
+
+## Array.prototype.some()
+
+深度特性参考`every`.一模一样。
+
+基本特性为：数组中只要有一项符合条件，立即中断，返回`true.
+
+## Array.prototype.sort()
+
+关键词: `对数组进行排序`
+
+可接受一个比较函数。如果没有，则先将数组的每一项转换为字符串，再按照字符编码位数进行排序。
+
+```js
+const arr = [1000, 9];
+arr.sort();
+arr; // [1000, 9]
+
+// 接受一个比较函数。
+// 如果fun(a, b) < 0,则a排在b前面
+// 如果fun(a, b) = 0,则a，b的相对位置不变。（并非所有浏览器都能做到这一点）
+// 如果fun(a, b) > 0,则a排在b后面
+
+const arr1 = [9, 7, 8, 1];
+arr1.sort((a, b) => a - b); // [1, 7, 8, 9]
+```
+
+## Array.prototype.splice()
+
+关键词: `增删改`、`返回被删除的项组成的数组`
+
+```js
+const arr = [1, 2, 3, 4, 5, 6];
+// 从index=2开始，删除两项。并从index=2开始，将7，8添加到数组
+const deleteArr = arr.splice(2, 2, 7, 8);
+
+arr; // [1, 2, 7, 8, 5, 6]
+deleteArr; // [3, 4]
+```
+
+## Array.prototype.toString()
+
+覆盖了 `Object` 的 `toString()` 方法.
+
+```js
+[1, 2, 3] + "a"; // '1,2,3a'
+```
+
+至此，目前版本数组的方法全部完毕。
+
+🎉🎉🎉
