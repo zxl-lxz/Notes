@@ -1,13 +1,18 @@
-// 将一个字符串中的大小写转换
+## 将一个字符串中的大小写转换
+
+```js
 const convertCase = (str) => {
     return str.replace(/([a-z]*)([A-Z]*)/g, (m, s1, s2) => {
-        return `${s1.toUpperCase()}${s2.toLowerCase()}`
+        return `${s1.toUpperCase()}${s2.toLowerCase()}`;
     });
 };
 
-console.log(convertCase('abcABC')); // ABCabc
+console.log(convertCase("abcABC")); // ABCabc
+```
 
-// 获取URL的参数
+## 获取 URL 的参数
+
+```js
 const parse = (url) => {
     let params = {};
     if (!url) {
@@ -19,8 +24,11 @@ const parse = (url) => {
         params[key] = value;
     });
 };
+```
 
-// 数组去重（支持多维）
+## 数组去重（支持多维）
+
+```js
 let result = [];
 
 const deduplication = (arr) => {
@@ -33,8 +41,11 @@ const deduplication = (arr) => {
     });
     return [...new Set(result)];
 };
+```
 
-// 手写new
+## 手写 new
+
+```js
 // 创建一个新对象
 // 新对象继承构造函数原型上的方法
 // 将this指向新对象，以便继承属性。完成初始化。
@@ -44,10 +55,13 @@ const _new = (Fn, ...arg) => {
     const obj = Object.create(Fn.prototype);
     // 继承属性
     const result = Fn.apply(obj, arg);
-    return typeof result === 'object' ? result : obj;
-}
+    return typeof result === "object" ? result : obj;
+};
+```
 
-// 点击平滑滚动
+## 点击平滑滚动
+
+```js
 const scrollSmoothTo = (targetPosition) => {
     if (!window.requestAnimationFrame) {
         window.requestAnimationFrame = (callback) => setTimeout(callback, 20);
@@ -60,7 +74,7 @@ const scrollSmoothTo = (targetPosition) => {
         let distance = targetPosition - scrollTop;
 
         // 下一步要滚动到的高度
-        scrollTop = scrollTop + (distance / 6);
+        scrollTop = scrollTop + distance / 6;
 
         // 边界处理
         if (Math.abs(distance) < 1) {
@@ -71,21 +85,28 @@ const scrollSmoothTo = (targetPosition) => {
         }
     };
     step();
-}
+};
+```
 
-// 函数柯里化
+## 函数柯里化
 
+```js
 let judge;
 const curry = function (fn) {
-    return judge = (...args) => fn.length === args.length ? fn.call(this, ...args) : (...nextArg) => judge(...args, ...nextArg)
+    return (judge = (...args) =>
+        fn.length === args.length
+            ? fn.call(this, ...args)
+            : (...nextArg) => judge(...args, ...nextArg));
 };
+```
 
-// 去除对象数组中，对象某个属性重复的项
+## 去除对象数组中，对象某个属性重复的项
+
+```js
 const mergeList = (addList, list, attr) => {
     const newsetList = addList.filter((item) => {
         return list.every((citem) => citem[attr] !== item[attr]);
     });
-    return [...list, ...newsetList]
-}
-
-
+    return [...list, ...newsetList];
+};
+```
