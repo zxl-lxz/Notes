@@ -178,7 +178,7 @@
 
 5. 这时候就轮到 `document.documentElement.clientWidth` 或者 `document.documentElement.getBoundingClientRect().width` 出场了。当我们的 `initial-scale=1` 的时候，其值就是设备的 `设备独立像素`.
 
-6. 那么 `@b = clientWidth / 750`.我们可以在JS里将跟元素的 `font-size` 设置为这个值。那么就可以直接用rem做单位了。
+6. 那么 `@b = clientWidth / 750`.我们可以在JS里将根元素的 `font-size` 设置为这个值。那么就可以直接用rem做单位了。
 
 以上其实已经解决了自适应问题了。
 
@@ -220,13 +220,13 @@ function Adaptive() {
         htmlElement = document.documentElement,
         metaElement = document.createElement("meta");
 
-    // 设置跟元素的字体大小
+    // 设置根元素的字体大小
     function resetRem() {
         const rem = htmlElement.getBoundingClientRect().width / 16;
         htmlElement.style.fontSize = rem + "px";
     }
 
-    // 当调整窗口大小,页面显示的时候，重新设置跟元素字体大小
+    // 当调整窗口大小,页面显示的时候，重新设置根元素字体大小
     window.addEventListener("resize", function () {
         clearTimeout(timer);
         timer = setTimeout(resetRem, 300)
@@ -249,6 +249,7 @@ function Adaptive() {
     // 初始化的时候，执行一遍函数
     resetRem();
 }
+Adaptive();
 ```
 
 
