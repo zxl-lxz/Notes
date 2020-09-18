@@ -24,7 +24,7 @@
 
 ### `英寸`
 
-`英寸` 是设备 ==对角线== 的长度。
+`英寸` 是设备对角线的长度。
 
 `1英寸 = 2.54厘米`
 
@@ -96,38 +96,9 @@
 
 在 `CSS` 环境。可以使用 `min-device-pixel-ratio:` 来获取。
 
-<html>
-<style>
-.div {
-    margin: 0px;
-    padding: 8px 4px 6px;
-    max-width: 100%;
-    box-sizing: border-box;
-    word-wrap: break-word !important;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: normal;
-    letter-spacing: 0.544000029563904px;
-    orphans: auto;
-    text-indent: 0px;
-    text-transform: none;
-    widows: 1;
-    word-spacing: 0px;
-    -webkit-text-stroke-width: 0px;
-    border-radius: 0px;
-    overflow-y: auto;
-    color: rgb(80, 97, 109);
-    text-align: start;
-    font-size: 10px; 
-    font-family: consolas, menlo, courier, monospace, 'Microsoft Yahei' !important;
-    border: 1px solid rgb(226, 226, 226) !important;
-    background: rgb(241, 239, 238);
-}
-</style>
-<div class="div">
-    @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2){ }
-</div>
-</html>
+```css
+@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2){ }
+```
 
 当然，会发现有的设备其 `dpr * 设备独立像素` 并不等于其分辨率。这个我们不用去管。手机会把计算出来的像素塞进其物理像素中去。
 
@@ -157,7 +128,7 @@
 
 内容比较多。还是懵的建议多看几遍。多去思考，把逻辑理清楚。自己动手去试试。
 
-### ==方案==
+### 方案
 
 理清楚了上面的各属性以后。我们来看下，在不做任何处理的时候，我们写一个 `100px` 的元素，在各设备上显示的情况。
 
