@@ -97,7 +97,8 @@
 在 `CSS` 环境。可以使用 `min-device-pixel-ratio:` 来获取。
 
 ```css
-@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2){ }
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+}
 ```
 
 当然，会发现有的设备其 `dpr * 设备独立像素` 并不等于其分辨率。这个我们不用去管。手机会把计算出来的像素塞进其物理像素中去。
@@ -122,9 +123,9 @@
 
 `viewport-fit`:
 
-- `auto`: 不影响初始布局视口，并且整个网页都是可见的。
-- `contain`: 表示视口已缩放以适合显示在显示屏上的最大矩形。
-- `cover`: 表示视口已缩放以填充设备显示。强烈建议使用安全区域插入变量，以确保重要内容不会出现在显示屏之外。
+-   `auto`: 不影响初始布局视口，并且整个网页都是可见的。
+-   `contain`: 表示视口已缩放以适合显示在显示屏上的最大矩形。
+-   `cover`: 表示视口已缩放以填充设备显示。强烈建议使用安全区域插入变量，以确保重要内容不会出现在显示屏之外。
 
 内容比较多。还是懵的建议多看几遍。多去思考，把逻辑理清楚。自己动手去试试。
 
@@ -135,24 +136,28 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  minimum-scale=1.0, user-scalable=no,viewport-fit=cover">
-    <title>Document</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-        }
-        .div1 {
-            width: 100px;
-            height: 100px;
-        }
-    </style>
-</head>
-<body>
-    <div class="div1"></div>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  minimum-scale=1.0, user-scalable=no,viewport-fit=cover"
+        />
+        <title>Document</title>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .div1 {
+                width: 100px;
+                height: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="div1"></div>
+    </body>
 </html>
 ```
 
@@ -172,13 +177,13 @@
 
 2. 我们获取到来设计稿上一个元素的大小。假设为 `100px`。
 
-3. 现在，如果我们直接在代码里写 `100px` 。在目前市面上的设备里，好像没有一款设备的独立像素为750的。所以，这个元素将会严重比设计稿上占的比例大。而且是大很多。
+3. 现在，如果我们直接在代码里写 `100px` 。在目前市面上的设备里，好像没有一款设备的独立像素为 750 的。所以，这个元素将会严重比设计稿上占的比例大。而且是大很多。
 
 4. 所以我们迫切需要一个单位，暂且命名为@b。当我们写 `100@b` 的时候，其能在任何设备上做自适应的大小。
 
 5. 这时候就轮到 `document.documentElement.clientWidth` 或者 `document.documentElement.getBoundingClientRect().width` 出场了。当我们的 `initial-scale=1` 的时候，其值就是设备的 `设备独立像素`.
 
-6. 那么 `@b = clientWidth / 750`.我们可以在JS里将根元素的 `font-size` 设置为这个值。那么就可以直接用rem做单位了。
+6. 那么 `@b = clientWidth / 750`.我们可以在 JS 里将根元素的 `font-size` 设置为这个值。那么就可以直接用 rem 做单位了。
 
 以上其实已经解决了自适应问题了。
 
@@ -204,7 +209,7 @@
 
 🎉🎉🎉
 
-### `下面给出JS设置方案`
+### `下面给出JS设置方案（rem方案）`
 
 ```js
 // 750的设计稿
@@ -218,31 +223,48 @@ function Adaptive() {
         dpr = window.navigator.appVersion.match(/iphone/gi) ? window.devicePixelRatio : 1,
         scale = 1 / dpr,
         htmlElement = document.documentElement,
-        metaElement = document.createElement("meta");
+        metaElement = document.createElement('meta');
 
     // 设置根元素的字体大小
     function resetRem() {
         const rem = htmlElement.getBoundingClientRect().width / 16;
-        htmlElement.style.fontSize = rem + "px";
+        htmlElement.style.fontSize = rem + 'px';
     }
 
     // 当调整窗口大小,页面显示的时候，重新设置根元素字体大小
-    window.addEventListener("resize", function () {
-        clearTimeout(timer);
-        timer = setTimeout(resetRem, 300)
-    }, false);
-    window.addEventListener("pageshow", function () {
-        clearTimeout(timer);
-        timer = setTimeout(resetRem, 300)
-    }, false);
+    window.addEventListener(
+        'resize',
+        function () {
+            clearTimeout(timer);
+            timer = setTimeout(resetRem, 300);
+        },
+        false
+    );
+    window.addEventListener(
+        'pageshow',
+        function () {
+            clearTimeout(timer);
+            timer = setTimeout(resetRem, 300);
+        },
+        false
+    );
 
     // 设置html元素的data-dpr属性。做字体大小的自适应。
     // 字体不适合用rem，因为通过计算得来的px。很有可能为13，15这种大小。不在其点阵里面。显示出来的字体会很难看。
-    htmlElement.setAttribute("data-dpr", dpr);
+    htmlElement.setAttribute('data-dpr', dpr);
 
     // 设置viewport属性
-    metaElement.setAttribute("name", "viewport");
-    metaElement.setAttribute("content", "initial-scale=" + scale + ", maximum-scale=" + scale + ", minimum-scale=" + scale + ", user-scalable=no, viewport-fit=cover");
+    metaElement.setAttribute('name', 'viewport');
+    metaElement.setAttribute(
+        'content',
+        'initial-scale=' +
+            scale +
+            ', maximum-scale=' +
+            scale +
+            ', minimum-scale=' +
+            scale +
+            ', user-scalable=no, viewport-fit=cover'
+    );
     // 往 head 里插入 meta
     htmlElement.firstElementChild.append(metaElement);
 
@@ -252,6 +274,85 @@ function Adaptive() {
 Adaptive();
 ```
 
+### 字体方案
 
+为什么字体不使用以上的 `rem` 作为单位自适应呢？
 
+1. 在大屏，我们希望看到更多的文字。
+2. 中文点阵最好是在 `12px, 14px, 16px`。如果使用计算而来的大小，避免不了会有 `13px, 15px` 这种尺寸。这样的文字显示奇怪。
 
+我们已经设置了 `html` 元素的 `data-dpr`属性为现在设备的 `dpr` . 当 `dpr` 大于 `1` 的时候，我们同时设置 `initial-scale= 1/dpr`。让这两者同步。
+
+```less
+// less
+.px2px(@name, @px) {
+    @{name}: floor(@px / 2) * 1px;
+    [data-dpr='2'] & {
+        @{name}: @px * 1px;
+    } // for mx3
+    [data-dpr='2.5'] & {
+        @{name}: floor(@px * 2.5 / 2) * 1px;
+    } // for 小米note
+    [data-dpr='2.75'] & {
+        @{name}: floor(@px * 2.75 / 2) * 1px;
+    }
+    [data-dpr='3'] & {
+        @{name}: floor(@px / 2 * 3) * 1px;
+    } // for 三星note4
+    [data-dpr='4'] & {
+        @{name}: @px * 2px;
+    }
+}
+
+.fontSize(@px) {
+    .px2px(font-size, @px);
+}
+```
+
+这样可以有效避免奇怪的尺寸。
+
+在同样的 `dpr` 下，设备独立像素越大的，显示的文字内容也就越多。
+
+### 1 像素边框方案
+
+1. 根据设备的 `dpr` 去设置 `innitail-scale=1/dpr` 的时候，我们直接在 `CSS`里写 `1px` 就是 真正的`1px`。
+
+2. 用伪元素
+
+```less
+// less
+.border-common() {
+    position: relative;
+    &:after {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        pointer-events: none;
+        z-index: 1;
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        &:after {
+            right: -100%;
+            bottom: -100%;
+            -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+            z-index: 1;
+        }
+    }
+}
+
+.border(@px, @type, @color) {
+    .border-common();
+    &:after {
+        border: @px @type @color;
+    }
+}
+```
