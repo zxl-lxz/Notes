@@ -80,7 +80,7 @@ Object.assign(undefined); // 报错
 如果是 `null` 或者 `undefined` 不会报错。直接跳过。其它类型，除了字符串类型和数组，也会被跳过。
 
 ```js
-Object.assign({}, null, undefined, true, /\d+/g, 111, "abc", () => {}, [1, 2]);
+Object.assign({}, null, undefined, true, /\d+/g, 111, 'abc', () => {}, [1, 2]);
 // {0: 1, 1: 2, 2: 'c'}
 ```
 
@@ -90,7 +90,7 @@ Object.assign({}, null, undefined, true, /\d+/g, 111, "abc", () => {}, [1, 2]);
 
 创建一个新对象，使用传入的对象来提供新创建对象的 `_proto_` 属性。
 
-![image](http://udh.oss-cn-hangzhou.aliyuncs.com/e6941962-039b-45cd-a2ef-c49043640fe5)
+![image](http://udh.oss-cn-hangzhou.aliyuncs.com/2c39b918-1a1e-41bf-a8ee-3d6a2639f328WX20200915-160738@2x.png)
 
 📓：用 `Object.create()` 实现继承。
 
@@ -108,12 +108,12 @@ function Sub(name) {
 Sub.prototype = Object.create(Super.prototype);
 Sub.prototype.constructor = Sub;
 
-const sub = new Sub("ZL");
+const sub = new Sub('ZL');
 ```
 
 我们在控制台，看看发生了什么。
 
-![image](http://udh.oss-cn-hangzhou.aliyuncs.com/8f53169f-7d08-4e2d-95a7-a74c5d01c872)
+![image](http://udh.oss-cn-hangzhou.aliyuncs.com/97ac12f3-b3c7-42b2-a61b-9d2ee9106560WX20200915-163032@2x.png)
 
 `sub` 是我们创建的自类型的实例。它有自身的属性 `name` 。其 `_proto_` 属性指向其构造函数的 `prototype` 属性。也就是 `Sub` 的 `prototype` 属性。
 
@@ -172,7 +172,7 @@ o = {
         return 17;
     },
 };
-d = Object.getOwnPropertyDescriptor(o, "foo");
+d = Object.getOwnPropertyDescriptor(o, 'foo');
 // d {
 //   configurable: true,
 //   enumerable: true,
@@ -224,9 +224,9 @@ const obj = {
     c: undefined,
 };
 
-obj.hasOwnProperty("a");
-obj.hasOwnProperty("b");
-obj.hasOwnProperty("c");
+obj.hasOwnProperty('a');
+obj.hasOwnProperty('b');
+obj.hasOwnProperty('c');
 // 以上均返回 true
 ```
 
