@@ -51,3 +51,4 @@
 
 -   [x] [从键入 URL 到显示页面发生了什么](https://github.com/1282772905/Notes/blob/master/http/%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2/%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2.md)
 -   [x] [Get 和 Post 的区别](https://github.com/1282772905/Notes/blob/master/http/Get%E5%92%8CPost/Get%E5%92%8CPOST.md)
+-   [x] [跨域](https://github.com/1282772905/Notes/blob/master/http/%E8%B7%A8%E5%9F%9F/index.md)
