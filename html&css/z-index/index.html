@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>z-index</title>
+    <style>
+        .wrap {
+            width: 200px;
+            height: 200px;
+            background-color: blanchedalmond;
+            position: relative;
+            z-index: 9;
+        }
+        .item1 {
+            width: 50px;
+            height: 50px;
+            background-color: brown;
+            position: absolute;
+            z-index: auto;
+        }
+        .item2 {
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            position: absolute;
+            z-index: 99;
+        }
+        .content {
+            width: 400px;
+            height: 400px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="item1"></div>
+        <div class="item2"></div>
+    </div>
+    <div class="content"></div>
+</body>
+</html>
