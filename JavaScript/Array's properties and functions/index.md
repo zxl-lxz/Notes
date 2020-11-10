@@ -32,7 +32,7 @@ Array.isArray(Array.prototype); // true
 const obj = { a: 1 };
 
 const arr = Array.from(
-    "12",
+    '12',
     function (x) {
         x += this.a;
         return x;
@@ -92,9 +92,9 @@ originTwo; // [[1, 2]]
 
 接受三个参数：
 
--   `target`: 从该位置开始替换。如果是负数，加上 length.
--   `start`: 从该位置开始读取。如负，加 length.
--   `end`: 在该位置之前结束读取。如负，加 length.
+-   `target`: 从该位置开始替换。如果是负数，加上 `length`.
+-   `start`: 从该位置开始读取。如负，加 `length`.
+-   `end`: 在该位置之前结束读取。如负，加 `length`.
 
 比较晦涩难懂，用例子说明:
 
@@ -158,7 +158,7 @@ k.next(); // {value: 0, done: false}
 
 ```js
 const arr = [1, 2];
-const isNum = arr.every((item) => typeof item === "number");
+const isNum = arr.every((item) => typeof item === 'number');
 isNum; // true
 ```
 
@@ -274,7 +274,7 @@ const isRight = arr.every((item) => item > 100000); // true
 关键词: `填充数组`
 
 ```js
-const arr = new Array(3).fill("a"); // ['a', 'a', 'a']
+const arr = new Array(3).fill('a'); // ['a', 'a', 'a']
 
 // 可接受三个参数.分别为值，开始位置，结束位置（不包括）
 
@@ -389,11 +389,7 @@ arr.reduce((acc, val) => acc.concat(val), []);
 ```js
 const flat = (arr, deep = 1) => {
     return deep > 0
-        ? arr.reduce(
-              (acc, val) =>
-                  acc.concat(Array.isArray(val) ? flat(val, deep - 1) : val),
-              []
-          )
+        ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flat(val, deep - 1) : val), [])
         : arr.slice();
 };
 ```
@@ -447,9 +443,9 @@ const arr = [1, 2, 3];
 
 arr.join(); // 不传参数，默认使用英文逗号 '1,2,3'
 
-arr.join(""); // '123'
+arr.join(''); // '123'
 
-arr.join("-"); // '1-2-3'
+arr.join('-'); // '1-2-3'
 
 // undefined和null会被转换为空字符串
 const arr1 = [1, undefined, null, 1];
@@ -561,7 +557,7 @@ arr.slice(0, -100); // []
 
 深度特性参考`every`.一模一样。
 
-基本特性为：数组中只要有一项符合条件，立即中断，返回`true.
+基本特性为：数组中只要有一项符合条件，立即中断，返回`true`.
 
 ## Array.prototype.sort()
 
@@ -601,7 +597,7 @@ deleteArr; // [3, 4]
 覆盖了 `Object` 的 `toString()` 方法.
 
 ```js
-[1, 2, 3] + "a"; // '1,2,3a'
+[1, 2, 3] + 'a'; // '1,2,3a'
 ```
 
 至此，目前版本数组的方法全部完毕。
