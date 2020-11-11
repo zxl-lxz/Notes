@@ -14,7 +14,7 @@ async function foo() {
     })
 }
 
-init() {
+async function init() {
     await foo();
     console.log('after foo');
 }
@@ -30,12 +30,12 @@ init() {
 
 ```js
 async function foo() {
-    return "a";
+    return 'a';
 }
 foo().then((value) => console.log(value)); // a
 
 async function bar() {
-    throw Error("error");
+    throw Error('error');
 }
 bar().catch((err) => consle.log(err)); // error
 ```
@@ -56,7 +56,7 @@ foo().then((value) => console.log(value)); // 123
 
 ```js
 async function foo() {
-    await Promise.reject("error");
+    await Promise.reject('error');
     console.log(111); // 不会执行
 }
 foo().catch((v) => log(v)); // error
@@ -69,11 +69,11 @@ foo().catch((v) => log(v)); // error
 ```js
 async function foo() {
     try {
-        await Promise.reject("error");
+        await Promise.reject('error');
     } catch (val) {
         log(val); // error
     }
-    return await Promise.resolve("a"); // 执行
+    return await Promise.resolve('a'); // 执行
 }
 ```
 
@@ -81,8 +81,8 @@ async function foo() {
 
 ```js
 async function foo() {
-    await Promise.reject("error").catch(() => {});
-    return await Promise.resolve("a"); // 执行
+    await Promise.reject('error').catch(() => {});
+    return await Promise.resolve('a'); // 执行
 }
 ```
 
