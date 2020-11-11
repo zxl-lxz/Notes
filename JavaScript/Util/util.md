@@ -7,7 +7,7 @@ const convertCase = (str) => {
     });
 };
 
-console.log(convertCase("abcABC")); // ABCabc
+console.log(convertCase('abcABC')); // ABCabc
 ```
 
 ## 获取 URL 的参数
@@ -55,7 +55,7 @@ const _new = (Fn, ...arg) => {
     const obj = Object.create(Fn.prototype);
     // 继承属性
     const result = Fn.apply(obj, arg);
-    return typeof result === "object" ? result : obj;
+    return typeof result === 'object' ? result : obj;
 };
 ```
 
@@ -91,13 +91,23 @@ const scrollSmoothTo = (targetPosition) => {
 ## 函数柯里化
 
 ```js
+const foo = (a, b, c) => a + b + c;
+
 let judge;
 const curry = function (fn) {
     return (judge = (...args) =>
-        fn.length === args.length
-            ? fn.call(this, ...args)
-            : (...nextArg) => judge(...args, ...nextArg));
+        fn.length === args.length ? fn.call(this, ...args) : (...nextArg) => judge(...args, ...nextArg));
 };
+const bar = curry(foo);
+bar(1)(2, 3); // 6
+
+// 或者更简洁
+function curry(fn, ...args) {
+    return args.length >= fn.length ? fn(...args) : curry.bind(null, fn, ...args);
+}
+const bar = curry(foo, 1);
+bar(2)(3); // 6
+bar(2, 3); // 6
 ```
 
 ## 去除对象数组中，对象某个属性重复的项
