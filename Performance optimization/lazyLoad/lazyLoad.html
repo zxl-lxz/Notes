@@ -36,6 +36,12 @@
     </div>
     
     <script>
+        // 通过 document.documentElement.clientHeight 或者 window.innerHeight 获取视窗的高度。
+        // 在我们想要做懒加载的img标签上，需要给出特殊的标示。如lazyload属性。并且需要把要展示的图片作为自定义属性data-src的值。以便等下知道该为该图片加载哪个图片。
+        // 我们通过属性选择器获取到所有具有 data-src 和 lazyload 属性的img标签。
+        // 循环遍历这个类数组,通过 getboundingClientRec()方法，获取到一个对象。该对象的top,right,bottom,left属性表面了该对象边界距离视窗边界的距离。
+        // 也就是说，如果bottom > 0 并且 top小于我们刚刚得出的视窗高度的化，说明该元素以及暴露在视野之内了。
+        // 这时候，设置img的src属性为data-src属性即可。并将这个img标签的lazyload属性和data-src属性删除。
         let viewHeight = document.documentElement.clientHeight || window.innerHeight; // 可视区域（视窗）高度
         function lazyLoad() {
             // 获取所有有lazyload和data-src属性的img标签
