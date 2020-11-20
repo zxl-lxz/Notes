@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>file</title>
+</head>
+<body>
+    <!--
+    * 详细参考：https://developer.mozilla.org/zh-CN/docs/Web/API/File/Using_files_from_web_applications#Example.3A_Using_object_URLs_to_display_images
+    * input type=file
+    * accept: 指定允许上传的文件类型
+    * multiple: 允许同时上传多个文件
+
+    * 如果嫌弃原生的上传按钮太丑，可以设置input 元素的样式为 display:none.用其自定义元素代替。并监听该元素的click()事件，触发input元素的click()事件即可。
+    * 或者借助label标签，通过hack方法让input元素不可见（设置opcity或者其它方式么，注意不能设置visibility或者display:none）
+    * <input type="file" id="fileElem" multiple accept="image/*" class="visually-hidden">
+    * <label for="fileElem">Select some files</label> *
+    -->
+    <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/File/Using_files_from_web_applications#Example.3A_Using_object_URLs_to_display_images">MDN原文</a>
+    <input type="file" accept="image/*" multiple>
+    <div class="domstring"></div>
+    <div class="imgWrap"></div>
+    <script>
+        // ele.files属性可获取上传的文件列表
+        const ele = document.querySelector('input[type=file]');
+        const domString = document.querySelector('.domstring');
+        const imgWrap = document.querySelector('.imgWrap');
+
+        ele.addEventListener('change', () => {
+            // 打印出来我们上传的文件
+            console.log(ele.files);
+
+            // 有type,size,lastModify等属性，可以对文件类型，大小做beforeUpload限制。
+
+            const fileList = ele.files;
+
+            for (let i = 0; i < fileList.length; i++) {
+                // 展示文件名
+                const p = document.createElement('p');
+                p.innerHTML = fileList[i].name;
+                domString.appendChild(p);
+
+                // 创建img标签，并为其src属性赋值
+                let image = document.createElement('img');
+                image.file = fileList[i];
+                image.width = 100;
+
+                // 异步读取上传图片
+                // 不兼容IE10以下
+                // 也可以直接使用window.URL.createObjectURL(fileList[i])获取图片链接
+                let reader = new FileReader();
+                reader.onload = (function(img) {
+                    return function(e) {
+                        img.src = e.target.result;
+                    }
+                })(image);
+
+                // 返回一个result属性，值为文件base64编码后对链接
+                reader.readAsDataURL(fileList[i])
+                imgWrap.appendChild(image);
+            }
+        });
+    </script>
+</body>
+</html>
