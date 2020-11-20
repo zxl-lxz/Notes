@@ -28,6 +28,7 @@
 -   [x] [async await](https://github.com/1282772905/Notes/blob/master/JavaScript/async%20await/index.md)
 -   [x] [Array 的访问、修改和迭代](https://github.com/1282772905/Notes/blob/master/JavaScript/Array's%20properties%20and%20functions/index.md)
 -   [x] [Object](https://github.com/1282772905/Notes/blob/master/JavaScript/Object's%20properties%20and%20functions/index.md)
+-   [x] [自定义文件上传](https://github.com/1282772905/Notes/blob/master/html%26css/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/index.html)
 
 ## [Vue](https://github.com/1282772905/Notes/tree/master/Vue)
 
