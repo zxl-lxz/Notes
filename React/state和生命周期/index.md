@@ -1,3 +1,5 @@
+![image](http://udh.oss-cn-hangzhou.aliyuncs.com/224c748e-e0ac-4239-8646-c7aaa0fdbb5e1605664023018WX202011180946412x.png)
+
 1. state
 
 ```jsx
@@ -5,14 +7,12 @@ class Clock extends React.component {
     constructor(props) {
         super(props);
         // 仅仅在构造函数里，state可以这样写，其它地方更改，需要用setState()
-        this.state =  {
+        this.state = {
             date: new Date(),
         };
     }
     render() {
-        return (
-            <div>{this.state.date.toLocaleTimeString()}</div>
-        )
+        return <div>{this.state.date.toLocaleTimeString()}</div>;
     }
 }
 ```
@@ -24,7 +24,7 @@ class Clock extends React.component {
     constructor(props) {
         super(props);
         // 仅仅在构造函数里，state可以这样写，其它地方更改，需要用setState()
-        this.state =  {
+        this.state = {
             date: new Date(),
         };
     }
@@ -46,9 +46,7 @@ class Clock extends React.component {
         });
     }
     render() {
-        return (
-            <div>{this.state.date.toLocaleTimeString()}</div>
-        )
+        return <div>{this.state.date.toLocaleTimeString()}</div>;
     }
 }
 ```
