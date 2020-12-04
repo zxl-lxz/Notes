@@ -36,6 +36,7 @@
 -   [x] [自定义指令](https://github.com/1282772905/Notes/blob/master/Vue/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/directives.md)
 -   [x] [生命周期](https://github.com/1282772905/Notes/blob/master/Vue/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.md)
 -   [x] [computed](https://github.com/1282772905/Notes/blob/master/Vue/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/computed%26watch/computed.md)
+-   [x] [实现 EventBus](https://github.com/1282772905/Notes/blob/master/Vue/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/EventBus.md)
 
 ## [React](https://github.com/1282772905/Notes/tree/master/React)
 
