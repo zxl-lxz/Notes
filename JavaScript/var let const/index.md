@@ -95,6 +95,7 @@ var a = 1;
     console.log(a);
     let a = 2;
 }
+// Uncaught ReferenceError: Cannot access 'a' before initialization
 //只要块级作用域内存在let命令，它所声明的变量就绑定这个区域，不再受外部的影响
 
 ////一个变量根本没有声明，typeof反而不会报错
@@ -132,7 +133,7 @@ a = 1000;
 //如果声明的是基本类型，值不能改变
 
 const obj = {};
-obj.name = "zhou";
+obj.name = 'zhou';
 obj.age = 22;
 //以上是可行的
 obj = {};

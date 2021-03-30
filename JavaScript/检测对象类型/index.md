@@ -5,19 +5,19 @@
 令人迷惑的操作符。应该避免使用它做以下检测。
 
 ```js
-typeof NaN === "number";
+typeof NaN === 'number';
 
-typeof [] === "object";
+typeof [] === 'object';
 
-typeof null === "object";
+typeof null === 'object';
 
-typeof new Date() === "object";
+typeof new Date() === 'object';
 
-typeof /\d+/ === "object";
+typeof /\d+/ === 'object';
 
-typeof new String("") === "object";
-typeof new Number(1) === "object";
-typeof new Boolean(true) === "object";
+typeof new String('') === 'object';
+typeof new Number(1) === 'object';
+typeof new Boolean(true) === 'object';
 ```
 
 仅仅用它来检测对象是否定义或者赋值，或者检测以下例子：
@@ -25,16 +25,16 @@ typeof new Boolean(true) === "object";
 ```js
 let b;
 
-typeof a === "undefined";
-typeof b === "undefined";
+typeof a === 'undefined';
+typeof b === 'undefined';
 
-typeof function () {} === "function";
+typeof function () {} === 'function';
 
-typeof "abc" === "string";
+typeof 'abc' === 'string';
 
-typeof 123 === "number";
+typeof 123 === 'number';
 
-typeof {} === "object";
+typeof {} === 'object';
 ```
 
 ## `instanceof`
@@ -60,7 +60,7 @@ new Sub() instanceof Super; // true
 
 ```js
 const num = 3;
-const str = "a";
+const str = 'a';
 const boolean = true;
 
 num.constructor === Number;
@@ -89,9 +89,8 @@ const toString = Object.prototype.toString;
 
 toString.call([]); // [object Array]
 
-const isACertainType = (typeStr) => (target) =>
-    typeStr === Object.prototype.toString.call(target).slice(8, -1);
-const isArray = isACertainType("Array");
+const isACertainType = (typeStr) => (target) => typeStr === Object.prototype.toString.call(target).slice(8, -1);
+const isArray = isACertainType('Array');
 isArray([]); // true
 
 // NaN 仍然返回Number

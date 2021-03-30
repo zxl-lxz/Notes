@@ -10,7 +10,7 @@
 
 <body>
     <div id="app">
-        <input v-for="(item, index) in lists" :key="item" :placeholder="item" type="text">
+        <input v-for="(item, index) in lists" :placeholder="item" type="text" :name="item">
         <button @click="add">添加</button>
     </div>
     <script>
