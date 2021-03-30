@@ -63,3 +63,4 @@
 ## [浏览器](https://github.com/1282772905/Notes/tree/master/%E6%B5%8F%E8%A7%88%E5%99%A8)
 
 -   [x] [浏览器缓存机制](https://github.com/1282772905/Notes/blob/master/%E6%B5%8F%E8%A7%88%E5%99%A8/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6.md)
+-   [x] [浏览器的关键渲染路径](https://github.com/1282772905/Notes/blob/master/Performance%20optimization/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93/index.md)

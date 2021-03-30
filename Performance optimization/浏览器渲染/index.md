@@ -108,3 +108,64 @@
 <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 480px)" />
 <!-- not blocking on large screens -->
 ```
+
+### JS 阻塞渲染及优化
+
+参考原文：[浏览器专题系列-阻塞渲染-掘金](https://juejin.cn/post/6926554160548708359#heading-7)
+
+#### 内联脚本阻塞渲染
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <h1>AAA</h1>
+        <script>
+            let d = Date.now();
+            while (Date.now() < d + 1000 * 5) {}
+        </script>
+        <h2>BBB</h2>
+    </body>
+</html>
+```
+
+页面白屏 5 秒，然后渲染全部内容。
+
+#### 外联同步脚本阻塞渲染
+
+```js
+// test.js
+let d = Date.now();
+while (Date.now() < d + 1000 * 5) {}
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <h1>AAA</h1>
+        <script src="./test.js"></script>
+        <h2>BBB</h2>
+    </body>
+</html>
+```
+
+页面先加载初 AAA,5 秒后加载初 BBB。
+
+#### 使用 `defer` 和 `async` 异步加载脚本。
+
+`defer`：异步进行下载，然后等待 HTML 解析完成后（DOM 完成构建）按照下载顺序进行执行
+
+`async`：异步进行下载,下载完成后会立即执行，执行时仍然会阻塞
