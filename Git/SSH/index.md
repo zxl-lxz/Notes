@@ -57,5 +57,3 @@ Are you sure you want to continue connecting (yes/no)?
 如果没有，可以使用 `ssh-keygen` 生成一个。
 
 运行结束以后，会在 `~/.ssh` 文件夹下生成 `id_rsa` 和 `id_rsa.pub` 两个文件。前者是私钥，后者是公钥。将后者的内容告诉远程主机即可。
-
-test
