@@ -13,7 +13,7 @@
 > 创建分支
 
 ```
-git checkout testing
+git branch testing
 ```
 
 ![image](https://git-scm.com/book/en/v2/images/head-to-master.png)
