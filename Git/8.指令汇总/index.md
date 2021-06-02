@@ -234,6 +234,21 @@ git push origin master
 
 ## 选择修订版本
 
+有时候我们需要恢复到特定的快照中
+
+### 使用 `git reflog` 查看快照
+
+```shell
+# 该指令会从近到远列出所有的快照：
+# 3556aa9 (HEAD -> master, origin/master, origin/HEAD) HEAD@{0}: commit: commit message a
+# f0dd3ae HEAD@{1}: commit: commit message b
+# 9e2a6b1 HEAD@{2}: commit: commit message c
+git reflog
+```
+
+### 使用 `git reset` 恢复到特定快照 
+
+
 
 
 
