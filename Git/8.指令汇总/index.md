@@ -1,4 +1,4 @@
-# `Git` 指令汇总
+# 常用`Git` 指令汇总
 
 本文只列出常用的指令。更多指令或参数请使用 `-h` 获取帮助。如：
 
@@ -247,6 +247,38 @@ git reflog
 ```
 
 ### 使用 `git reset` 恢复到特定快照 
+
+举个例子便于理解：
+
+现在有一个文件 `A`。我对它做了一些修改 `b`, 该文件现在变成了 `Ab`。
+
+现在我想恢复到文件 `A`。
+
+首先执行 `git reflog` 拿到想要恢复的快照的号码。即下面的 `754de8c`
+
+```shell
+git reflog
+
+# c88bd20 (HEAD -> master) HEAD@{0}: commit: Ab
+# 754de8c (origin/master, origin/HEAD) HEAD@{1}: commit: A
+```
+
+```shell
+# --mixed 默认参数：执行该指令后，修改 b 会存在（modified），但是没有被 add
+git reset 754de8c
+
+# 会看到 b 修改还在，只不过没有被add,可自行再做修改或者删除
+```
+
+```shell
+# --soft 参数：执行该指令后，修改 b 会存在，并且被add(处于暂存区中，未被commit)
+git reset --soft 754de8c
+```
+
+```shell
+# --hard 参数：执行该指令后，修改 b 会消失
+git reset --hard 754de8c
+```
 
 
 
