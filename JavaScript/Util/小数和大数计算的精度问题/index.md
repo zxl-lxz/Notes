@@ -3,49 +3,43 @@
 ```js
 // 加法
 // 0.1 + 0.02
-const add = (num1, num2) => {
-    // 1
-    const len1 = num1.toString().split('.')[1].length;
-    // 2
-    const len2 = num1.toString().split('.')[1].length;
+// 小数
+const add = (a, b) => {
+    const len1 = a.toString().split('.')[1].length;
+    const len2 = b.toString().split('.')[1].length;
 
-    // 100
     const multiple = Math.pow(10, Math.max(len1, len2));
 
-    return (num1 * multiple + num2 * multiple) / multiple;
+    return (a * multiple + b * multiple) / multiple;
 };
 
-// 减法
-const subtract = (num1, num2) => {
-    const len1 = num1.toString().split('.')[1].length;
-    const len2 = num1.toString().split('.')[1].length;
+const substruct = (a, b) => {
+    const len1 = a.toString().split('.')[1].length;
+    const len2 = b.toString().split('.')[1].length;
 
     const multiple = Math.pow(10, Math.max(len1, len2));
 
     const n = len1 > len2 ? len1 : len2;
 
-    return Number(((num1 * multiple - num2 * multiple) / multiple).toFixed(n));
+    return Number(((a * multiple - b * multiple) / multiple).toFixed(n));
 };
 
-// 乘法
-
-const multiple = (num1, num2) => {
-    const len1 = num1.toString().split('.')[1].length;
-    const len2 = num1.toString().split('.')[1].length;
+const _multiple = (a, b) => {
+    const len1 = a.toString().split('.')[1].length;
+    const len2 = b.toString().split('.')[1].length;
 
     const multiple = Math.pow(10, len1 + len2);
 
-    return (Number(num1.replace('.', '')) * Number(num2.replace('.', ''))) / Math.pow(10, multiple);
+    return (a.toString().replace('.', '') * b.toString().replace('.', '')) / multiple;
 };
 
-// 除法
-const divide = (num1, num2) => {
-    const len1 = num1.toString().split('.')[1].length;
-    const len2 = num1.toString().split('.')[1].length;
+const divide = (a, b) => {
+    const len1 = a.toString().split('.')[1].length;
+    const len2 = b.toString().split('.')[1].length;
 
-    const multiple = Math.pow(10, len1 + len2);
+    const multiple = Math.pow(10, Math.max(len1, len2));
 
-    return (num1 / num2) * Math.pow(10, len2 - len1);
+    return (a * multiple) / (b * multiple);
 };
 ```
 
@@ -61,8 +55,8 @@ const add = (num1, num2) => {
 
     const maxLen = Math.max(num1.length, num2.length);
 
-    num1 = num1.padString(maxLen, 0);
-    num2 = num2.padString(maxLen, 0);
+    num1 = num1.padStart(maxLen, 0);
+    num2 = num2.padStart(maxLen, 0);
 
     let temp = 0;
     let flag = 0;
