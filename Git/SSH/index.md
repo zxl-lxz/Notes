@@ -1,10 +1,8 @@
 # SSH
 
-阮一峰的网络日志: [SSH原理与运用（一）：远程登录](http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html)
-
+阮一峰的网络日志: [SSH 原理与运用（一）：远程登录](http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html)
 
 Git: [服务器上的 Git - 生成 SSH 公钥](https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5)
-
 
 ## SSH 是什么？
 
@@ -20,7 +18,7 @@ Git: [服务器上的 Git - 生成 SSH 公钥](https://git-scm.com/book/zh/v2/%E
 
 `SSH` 协议不像 `HTTP` 协议，`SSH` 的公钥没有证书中心认证。如果攻击者伪造远程主机，向用户发送公钥。就可以获取用户的密码。
 
-## SSH的应对方法
+## SSH 的应对方法
 
 如果用户是第一次登录远程主机，系统会出现下面的提示：
 
@@ -57,3 +55,33 @@ Are you sure you want to continue connecting (yes/no)?
 如果没有，可以使用 `ssh-keygen` 生成一个。
 
 运行结束以后，会在 `~/.ssh` 文件夹下生成 `id_rsa` 和 `id_rsa.pub` 两个文件。前者是私钥，后者是公钥。将后者的内容告诉远程主机即可。
+
+## 换电脑管理仓库
+
+换电脑后，想要往远程仓库推送代码，需要使用 `SSH Key` 的方式。
+
+首先要在新电脑内生成 `SSH key`
+
+```shell
+ssh-keygen -t rsa -C "email@xxx.com" # 邮箱
+```
+
+获取 `SSH key`
+
+```shell
+cd ~/.ssh
+ls
+cat id_rsa.pub
+```
+
+拷贝它，然后添加这个 `key` 到 `github` 的 `ssh keys` 配置里。
+
+然后使用 `SSH` 的方式 `clone` 项目就行。
+
+如果你是先使用的 `HTTPs` 的方式 `clone` 的项目，会发现不能推送更改到仓库。
+
+这时候需要更改为 `SSH` 的方式
+
+```shell
+git remote set-url origin git@github.com:xxx/xxx.git
+```
