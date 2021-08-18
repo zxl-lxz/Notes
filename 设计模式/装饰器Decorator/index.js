@@ -66,3 +66,40 @@ function classDeractor(target) {
 class Button {
   // Button类相关逻辑
 }
+
+// 也可以装饰类里面的方法
+// tagret就是从Button.prototype
+// name就是方法名
+// desciptor是属性描述对象
+function funcDecorator(target, name, descriptor) {
+  let originMethod = descriptor.value;
+  descriptor.value = function() {
+    console.log('something');
+    return originMethod.apply(this, arguments);
+  }
+}
+class Button {
+  @funcDecorator
+  onClick() {
+
+  }
+}
+
+// 装饰器的实践
+
+// HOC
+
+const HocComponent = component => () => {
+  return (
+    <div>
+      <component></component>
+    </div>
+  )
+}
+
+@HocComponent
+function A() {
+  return (
+    <div></div>
+  )
+}
