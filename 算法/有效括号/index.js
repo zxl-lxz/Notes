@@ -43,7 +43,7 @@ const isValid = function (s) {
         if (sArr[i] === '(' || sArr[i] === '[' || sArr[i] === '{') {
             stack.push(sArr[i]);
         } else {
-            const popItem = stack.pop(sArr[i]);
+            const popItem = stack.pop();
             if (!popItem || !isP(popItem, sArr[i])) {
                 return false;
             }
