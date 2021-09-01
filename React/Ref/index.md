@@ -135,7 +135,7 @@ class Parent extends React.Component {
 
 ## 回调 ref
 
-`回调ref` 使用函数的形式。这给函数可以接收 `React组件实例` 或者 `HTML DOM` 作为参数。所以它和 `React.createRef()` 一样，也可以作用于 `class组件` 和 `DOM`。
+`回调ref` 使用函数的形式。这个函数可以接收 `React组件实例` 或者 `HTML DOM` 作为参数。所以它和 `React.createRef()` 一样，也可以作用于 `class组件` 和 `DOM`。
 
 我们将上面的例子改成用 `回调ref` 的方法。
 
@@ -197,7 +197,7 @@ class Parent extends React.Component {
         this.myRef = element;
     };
     componentDidMount() {
-        this.myRef && this.myRef.focusInput();
+        this.myRef && this.myRef.focus();
     }
     render() {
         return <Child inputRef={this.setInputRef} />;
@@ -217,7 +217,7 @@ function Child(props) {
 class Parent extends React.Component {
     myRef = React.createRef();
     componentDidMount() {
-        this.myRef.current.focusInput();
+        this.myRef.current.focus();
     }
     render() {
         return <Child inputRef={this.myRef} />;
