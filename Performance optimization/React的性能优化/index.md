@@ -44,9 +44,21 @@ function MyComponent() {
 }
 ```
 
-## 跳过渲染
+## 避免不必要的渲染或者计算
 
-`React` 通过 `diff` 算法，已经尽可能的减少了需要更新的 `DOM节点` 的数量。不过如果我们知道何时可以不用更新 `DOM` ，我们可以通过以下这些方法来跳过渲染。
+在正常情况下，无须过分在乎 React 没有必要的渲染，要理解执行 render 不等于真正的浏览器渲染视图，render 阶段执行是在 js 当中，js 中运行代码远快于浏览器的 Rendering 和 Painting 的，更何况 React 还提供了 diff 算法等手段，去复用真实 DOM 。
+
+**什么时候需要注意渲染节流？**
+
+但是对于以下情况，值得开发者注意，需要采用渲染节流：
+
+第一种情况数据可视化的模块组件（展示了大量的数据），这种情况比较小心因为一次更新，可能伴随大量的 diff ，数据量越大也就越浪费性能，所以对于数据展示模块组件，有必要采取 memo ， shouldComponentUpdate 等方案控制自身组件渲染。
+
+第二种情况含有大量表单的页面，React 一般会采用受控组件的模式去管理表单数据层，表单数据层完全托管于 props 或是 state ，而用户操作表单往往是频繁的，需要频繁改变数据层，所以很有可能让整个页面组件高频率 render 。
+
+第三种情况就是越是靠近 app root 根组件越值得注意，根组件渲染会波及到整个组件树重新 render ，子组件 render ，一是浪费性能，二是可能执行 useEffect ，componentWillReceiveProps 等钩子，造成意想不到的情况发生。
+
+以下是一些手段：
 
 ### shouldComponentUpdate
 
@@ -202,9 +214,9 @@ class App extends React.Component() {
 
 参考 [通过跳过 Effect 进行性能优化](https://zh-hans.reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)
 
-## 跳过计算
+## useMemo缓存
 
-### useMemo
+### 缓存一个复杂计算的结果
 
 当有一个函数需要很长的执行时间，而其值影响到了 `DOM` 的渲染，但并不是唯一因素的时候，就需要用到这个 `hook`了。什么意思呢？
 
@@ -249,6 +261,17 @@ function Cal() {
             <button onClick={(count) => setCount(count + 1)} />
         </div>
     );
+}
+```
+
+### 缓存React element
+
+```js
+export default () => {
+    const [num, setNum] = useState(0);
+    return (
+        {useMemo(() => <Children num={num} />, [num])}
+    )
 }
 ```
 
