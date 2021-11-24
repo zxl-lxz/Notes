@@ -4,6 +4,8 @@
   "description": "notes",
   "main": "index.js",
   "dependencies": {
+    "ahooks": "^3.0.0-alpha.12",
+    "ahooks-v2": "^2.10.13",
     "babel-preset-es2015": "^6.24.1",
     "crypto": "^1.0.1",
     "eslint": "^5.16.0",
