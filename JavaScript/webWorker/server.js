@@ -17,6 +17,11 @@ const path = require('path');
 // req:浏览器的信息
 // res:服务器返回的结果
 const server = http.createServer((req, res) => {
+    if (path.normalize(decodeURI(pathname)) !== decodeURI(pathname)) {
+        res.statusCode = 403;
+        res.end();
+        return;
+    }
     // 我的index.js里开启了webworker
     // pathname：返回了两个值 /index.html /worker.js
     const pathname = url.parse(req.url).pathname;
