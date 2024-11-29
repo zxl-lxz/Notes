@@ -44,7 +44,7 @@ obj.b // 2
 
 ## `get()`
 
-拦截对象对读取操作。例如 `peoxy.foo` 或者 `proxy['foo']` 。
+拦截对象对读取操作。例如 `proxy.foo` 或者 `proxy['foo']` 。
 
 `get` 方法接受三个参数。依次为 `目标对象、属性名、proxy实例本身（可选）` 。
 
