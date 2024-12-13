@@ -2,19 +2,7 @@
 
 push + shift 模拟队列（先入先出）
 
-shift push
-^ -------- v
-<-------------
-q --------
-
 push + pop 模拟栈（先入后出）
-
-              push & pop
-                v     ^
-
-|---------
-|<-------------
-|---------
 
 ```js
 // 链式存储
@@ -34,7 +22,7 @@ const dfs = (node) => {
     if (!node) return;
     console.log(node.val);
 
-    node.left && dfs(node.lefy);
+    node.left && dfs(node.left);
     node.right && dfs(node.right);
 };
 
