@@ -1,6 +1,6 @@
 ## 链表
 
-链表的每一个节点都是一个对象或者说是一个引用，并不是说两个节点的 value 相等，就能够说这两个节点一样。除了 value 还有 next 、pre
+链表的每一个节点都是一个对象或者说是一个引用，并不是说两个节点的 val 相等，就能够说这两个节点一样。除了 val 还有 next 、prev
 
 交叉链表的交叉部分，就是节点一模一样，引用一模一样
 
@@ -26,8 +26,8 @@ let index = 0;
 
 ```js
 function List() {
-    const Node = function(element) {
-        this.element = element;
+    const Node = function(val) {
+        this.val = val;
         this.next = null;
     }
 
@@ -87,7 +87,7 @@ function List() {
         let pre = head;
 
         while(p) {
-            if (p.element === ele) {
+            if (p.val === ele) {
                 p = p.next;
                 pre.next = p;
             } else {
@@ -104,7 +104,7 @@ function List() {
         if (!p) return false;
 
         while(p) {
-            if (p.element === ele) return true
+            if (p.val === ele) return true
             p = p.next
         }
 
@@ -119,8 +119,8 @@ function List() {
 
 ```js
 function DoubleLinkList() {
-    const Node = function (element) {
-        this.element = element;
+    const Node = function (val) {
+        this.val = val;
         this.prev = null;
         this.next = null;
     };
@@ -201,7 +201,7 @@ function DoubleLinkList() {
                 curr.next.prev = prev;
             }
             length -= 1;
-            return curr.element;
+            return curr.val;
         } else {
             return null;
         }
