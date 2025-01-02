@@ -1,5 +1,11 @@
 ## 二叉树
 
+递归三部曲：
+
+1. 确定递归函数的参数和返回值
+2. 确定递归的终止条件
+3. 确定单层逻辑
+
 push + shift 模拟队列（先入先出）
 
 push + pop 模拟栈（先入后出）
@@ -62,22 +68,21 @@ bfs(root);
 
 #### 前序遍历
 
-前序遍历其实就是递归的方式。始终先遍历左树，再遍历右树。
+中 左 右
 
 ```js
 // 递归的方式
 const preorderTraversal = (root) => {
     const result = [];
 
-    const preorderTraversalNode = (node) => {
-        if (node) {
-            result.push(node.val);
-            preorderTraversalNode(node.left);
-            preorderTraversalNode(node.right);
-        }
+    const dfs = (node) => {
+        if (!node) return;
+        result.push(node.val);
+        dfs(node.left);
+        dfs(node.right);
     };
 
-    preorderTraversalNode(root);
+    dfs(root);
 
     return result;
 };
@@ -109,6 +114,8 @@ const preorderTraversal = (root) => {
 
 #### 中序遍历
 
+左 中 右
+
 ```js
 // 递归的方式
 const inorderTraversal = (node) => {
@@ -120,24 +127,29 @@ const inorderTraversal = (node) => {
 
 // 迭代的方式，也是利用栈的思想
 const inorderTraversal = (node) => {
-    if (!node) return;
-    const stask = [];
-    let p = node;
+    // const result = [];
 
-    while (stack.length || p) {
+    const stack = [];
+    const p = root;
+
+    while (p || stack.length) {
         while (p) {
             stack.push(p);
             p = p.left;
         }
 
-        const currNode = stack.pop();
-        console.log(currNode.val);
+        p = stack.pop();
+        // result.push(p.val);
         p = p.right;
     }
+
+    // return result;
 };
 ```
 
 #### 后序遍历
+
+左 右 中
 
 ```js
 // 递归的方式
@@ -165,5 +177,30 @@ const postorderTraversal = (node) => {
         const currNode = outputStack.pop();
         console.log(currNode.val);
     }
+};
+
+// 也可以利用前序遍历，更改一下顺序，再翻转结果就行
+// 前序：中 左 右  （改变顺序）=> 中右左 （翻转结果数组）=> 左右中
+const preorderTraversal = (root) => {
+    const result = [];
+    const stack = [];
+
+    if (root) stack.push(root);
+
+    while (stack.length > 0) {
+        const node = stack.pop();
+
+        result.push(node.val);
+
+        if (node.left) {
+            stack.push(node.left);
+        }
+
+        if (node.right) {
+            stack.push(node.right);
+        }
+    }
+
+    return result.reverse();
 };
 ```
