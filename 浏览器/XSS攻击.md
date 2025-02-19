@@ -21,3 +21,4 @@
 1. 敏感词校验
 2. 数据编码
 3. CSP（Content-Security-Policy）,通过 HTTP 头 或者 meta 标签定义哪些资源可以加载和执行。
+4. 避免使用 innerHTML 等容易引发 XSS 的 API，改用 textContent 等更安全的替代方案。
