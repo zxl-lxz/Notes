@@ -10,5 +10,3 @@ function instanceof (obj, target) {
     }
     return false;
 }
-
-// 判断obj的原型链上是否存在target函数的prototype
